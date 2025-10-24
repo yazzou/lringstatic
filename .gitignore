@@ -1,0 +1,48 @@
+# Claude AI development files
+.claude/
+.claude/sessions/
+.claude/sessions/.current-session
+
+# Editor and IDE files
+.cursor/
+
+# Superdesign development files
+.superdesign/
+.superdesign/design_iterations/
+
+# Project documentation and configuration
+CLAUDE.md
+ROLE.md
+UPDATES.md
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor backup files
+*~
+*.swp
+*.swo
+*.tmp
+
+# Node modules (if any)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Log files
+*.log
+
+# Cache directories
+.cache/
