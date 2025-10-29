@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#ffffff"/>
+  <g stroke="#d1d1d1" stroke-width="2" stroke-linejoin="round">
+    <polygon fill="#f6f6f6" points="140,740 320,400 600,310 880,210 1120,280 1320,520 1440,740"/>
+    <polygon fill="#efefef" points="320,400 470,380 640,320 560,520"/>
+    <polygon fill="#ececec" points="470,380 760,250 950,260 820,440"/>
+    <polygon fill="#e9e9e9" points="760,250 1040,260 1200,440 990,500"/>
+    <polygon fill="#f1f1f1" points="320,400 560,520 460,700 240,700"/>
+    <polygon fill="#f0f0f0" points="820,440 990,500 900,720 660,700"/>
+    <polygon fill="#ededed" points="990,500 1200,440 1330,620 1160,720"/>
+    <polygon fill="#e6e6e6" points="560,520 660,700 520,740"/>
+    <polygon fill="#e3e3e3" points="1340,520 1440,740 1180,720"/>
+    <polygon fill="#dedede" points="200,720 140,740 320,400 240,700"/>
+    <polygon fill="#dbdbdb" points="1120,280 1230,360 1360,520 1320,520"/>
+  </g>
+  <g fill="none" stroke="#bebebe" stroke-width="1.5" stroke-linejoin="round">
+    <path d="M140 740L320 400L600 310L880 210L1120 280L1320 520L1440 740"/>
+    <path d="M320 400L560 520L460 700"/>
+    <path d="M560 520L660 700L900 720L990 500L800 440Z"/>
+    <path d="M760 250L950 260L1200 440L1330 620"/>
+    <path d="M320 400L470 380L760 250"/>
+    <path d="M470 380L820 440L990 500"/>
+    <path d="M1320 520L1180 720"/>
+    <path d="M240 700L200 720"/>
+  </g>
+  <g fill="#bdbdbd">
+    <polygon points="240,720 260,650 310,650 320,720"/>
+    <polygon points="530,720 550,610 600,610 620,720"/>
+    <polygon points="980,720 1000,620 1050,620 1070,720"/>
+  </g>
+</svg>
