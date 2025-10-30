@@ -2,6 +2,25 @@
 
 ## Version History
 
+### lring_homepage_v8.html - 24 Octobre 2025
+**Focus: Harmonised Header & Hero Alignment**
+
+#### Previewing this Version
+- **Production URL after merge:** `https://yazzou.github.io/lringstatic/lring_homepage_v8.html`
+- **Branch preview (before merge):** `https://rawcdn.githack.com/yazzou/lringstatic/work/lring_homepage_v8.html`
+
+> GitHub Pages only publishes files from the default branch. Use the branch preview link (or run `python3 -m http.server` locally) if you need to review the page before the pull request is merged.
+
+#### Key Improvements:
+1. **Introduced a shared `.layout-container`** to align the header grid, optional top bar, and hero slider text on a common horizontal rhythm.
+2. **Softened the hero headline typography** by reducing weight, size, and letter-spacing so it transitions more naturally from the main navigation.
+3. **Updated responsive padding** to keep the shared container proportions consistent on tablets and phones.
+
+#### Technical Changes:
+- Added the reusable `.layout-container` helper and applied it to header and slider content blocks.
+- Adjusted `.slide-title` styling and overlay padding for cohesive hierarchy.
+- Synced breakpoint rules so container padding scales at `1200px` and `768px` widths.
+
 ### lring_homepage_v4.html - 24 Octobre 2025
 **Focus: Dual-Level Header with Contact & Social Strip**
 
