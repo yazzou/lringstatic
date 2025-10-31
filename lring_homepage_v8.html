@@ -22,12 +22,6 @@
             --social-bg: #000000;
         }
 
-        .layout-container {
-            max-width: 1800px;
-            margin: 0 auto;
-            padding: 0 60px;
-        }
-
         body {
             font-family: 'Oswald', sans-serif;
             background-color: var(--primary-bg);
@@ -52,7 +46,9 @@
         }
 
         .top-bar-inner {
-            padding: 4px 0;
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 4px 60px;
             display: flex;
             align-items: center;
             justify-content: flex-end;
@@ -92,11 +88,13 @@
         }
 
         .header-initial {
-            padding: 20px 0 25px;
+            padding: 20px 60px 25px;
             background: transparent;
         }
 
         .header-container {
+            max-width: 1800px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr auto 1fr auto;
             align-items: center;
@@ -127,7 +125,7 @@
         }
 
         .logo {
-            width: 160px;
+            width: 140px;
             height: auto;
         }
 
@@ -140,9 +138,9 @@
         }
 
         .main-nav a {
-            font-size: 26px;
-            font-weight: 600;
-            letter-spacing: 2px;
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             color: var(--text-primary);
             text-decoration: none;
@@ -312,18 +310,47 @@
                 rgba(255, 255, 255, 0.3) 75%,
                 rgba(255, 255, 255, 0) 100%
             );
-            padding: 80px 0 60px;
+            padding: 80px 60px 60px;
         }
 
         .slide-content {
-            width: 100%;
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 0 60px;
+            box-sizing: border-box;
+        }
+
+        .slide-text-block {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 30px 40px;
+            border-radius: 2px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideContentFadeIn 1s ease-out forwards;
+            animation-delay: 0.3s;
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes slideContentFadeIn {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .slide-title {
-            font-size: 48px;
-            font-weight: 600;
+            font-size: 56px;
+            font-weight: 700;
             margin: 0;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             line-height: 1.1;
             color: var(--text-primary);
@@ -367,7 +394,7 @@
             font-weight: 600;
             letter-spacing: 6px;
             text-transform: uppercase;
-            text-align: center;
+            text-align: left;
             margin-bottom: 80px;
             opacity: 0.4;
         }
@@ -457,13 +484,7 @@
         }
 
         .accent-diamond::after {
-            top: -32px;
-            right: 42px;
-            width: 48px;
-            height: 48px;
-            border: 2px solid var(--text-primary);
-            background: var(--primary-bg);
-            transform: rotate(45deg);
+            display: none; /* Hide the CSS diamond to show SVG icon */
         }
 
         .accent-circle-pin::before {
@@ -787,10 +808,6 @@
 
         /* RESPONSIVE */
         @media (max-width: 1200px) {
-            .layout-container {
-                padding: 0 40px;
-            }
-
             .competences-grid-secondary {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -806,8 +823,8 @@
         }
 
         @media (max-width: 768px) {
-            .layout-container {
-                padding: 0 24px;
+            .header-initial {
+                padding: 20px 30px;
             }
 
             .header-container {
@@ -816,7 +833,7 @@
             }
 
             .top-bar-inner {
-                padding: 6px 0;
+                padding: 6px 24px;
                 flex-direction: row;
                 align-items: center;
                 justify-content: flex-end;
@@ -835,7 +852,7 @@
             }
 
             .slide-overlay {
-                padding: 48px 0 28px;
+                padding: 48px 24px 28px;
             }
 
             .accent-square-stack::before {
@@ -1082,7 +1099,7 @@
             font-weight: 600;
             letter-spacing: 6px;
             text-transform: uppercase;
-            text-align: center;
+            text-align: left;
             margin-bottom: 80px;
             opacity: 0.4;
         }
@@ -1171,14 +1188,18 @@
             background: var(--text-primary);
         }
 
-        .accent-diamond::after w{
-            top: -32px;
-            right: 42px;
-            width: 48px;
-            height: 48px;
-            border: 2px solid var(--text-primary);
-            background: var(--primary-bg);
-            transform: rotate(45deg);
+        .accent-diamond::after {
+            display: none; /* Hide the CSS diamond to show SVG icon */
+        }
+
+        .accent-diamond-icon {
+            position: absolute;
+            top: -35px;
+            right: 35px;
+            width: 54px;
+            height: 54px;
+            z-index: 2;
+            opacity: 0.8;
         }
 
         .accent-circle-pin::before {
@@ -1500,10 +1521,6 @@
 
         /* RESPONSIVE */
         @media (max-width: 1200px) {
-            .layout-container {
-                padding: 0 40px;
-            }
-
             .competences-grid-secondary {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1518,27 +1535,13 @@
                 letter-spacing: 2px;
             }
         }
-
-        @media (max-width: 768px) {
-            .layout-container {
-                padding: 0 24px;
-            }
-
-            .top-bar-inner {
-                padding: 6px 0;
-            }
-
-            .slide-overlay {
-                padding: 48px 0 28px;
-            }
-        }
     </style>
 </head>
 <body>
     <!-- ENHANCED HEADER - Centered Logo -->
     <header class="site-header">
         <!-- <div class="top-bar">
-            <div class="top-bar-inner layout-container">
+            <div class="top-bar-inner">
                 <div class="top-bar-social">
                     <a href="#" aria-label="Instagram">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -1562,7 +1565,7 @@
             </div>
         </div> -->
         <div class="header-initial">
-            <div class="header-container layout-container">
+            <div class="header-container">
                 <!-- Left Navigation Items -->
                 <nav class="nav-left main-nav">
                     <a href="#bureau">Bureau d'études</a>
@@ -1602,7 +1605,11 @@
                     </a>
                 </div>
 
-            </div>
+ </div>
+
+
+
+
         </div>
     </header>
 
@@ -1635,49 +1642,146 @@
     </div>
     <section class="hero-section">
         <div class="slider-container">
-            <div class="slide active">
+            <div class="slide">
                 <img src="assets/img/lring__a_la_une.png" alt="Projet Architecture" class="slide-image">
                 <div class="slide-overlay">
-                    <div class="slide-content layout-container">
-                        <h2 class="slide-title">RESTRUCTURATION DU SIÈGE DE LA MUTUALITÉ FRANÇAISE (FNMF)</h2>
-                        <p class="slide-location">Paris, France</p>
+                    <div class="slide-content">
+                        <div class="slide-text-block">
+                            <h2 class="slide-title">RESTRUCTURATION DU SIÈGE DE LA MUTUALITÉ FRANÇAISE (FNMF)</h2>
+                            <p class="slide-location">Paris, France</p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="slide">
                 <img src="https://images.unsplash.com/photo-1486718448742-163732cd1544?w=1920&q=85" alt="Projet Architecture" class="slide-image">
                 <div class="slide-overlay">
-                    <div class="slide-content layout-container">
-                        <h2 class="slide-title">Centre Culturel Métropole</h2>
-                        <p class="slide-location">Lyon, France</p>
+                    <div class="slide-content">
+                        <div class="slide-text-block">
+                            <h2 class="slide-title">Centre Culturel Métropole</h2>
+                                            <p class="slide-location">Lyon, France</p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="slide">
                 <img src="https://images.unsplash.com/photo-1478860409698-8707f313ee8b?w=1920&q=85" alt="Projet Architecture" class="slide-image">
                 <div class="slide-overlay">
-                    <div class="slide-content layout-container">
-                        <h2 class="slide-title">Complexe Commercial Lumière</h2>
-                        <p class="slide-location">Marseille, France</p>
+                    <div class="slide-content">
+                        <div class="slide-text-block">
+                            <h2 class="slide-title">Complexe Commercial Lumière</h2>
+                                          <p class="slide-location">Marseille, France</p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="slide">
                 <img src="https://images.unsplash.com/photo-1503387837-b154d5074bd2?w=1920&q=85" alt="Projet Architecture" class="slide-image">
                 <div class="slide-overlay">
-                    <div class="slide-content layout-container">
-                        <h2 class="slide-title">Immeuble de Bureaux Zenith</h2>
-                        <p class="slide-location">Bordeaux, France</p>
+                    <div class="slide-content">
+                        <div class="slide-text-block">
+                            <h2 class="slide-title">Immeuble de Bureaux Zenith</h2>
+                                            <p class="slide-location">Bordeaux, France</p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="slide">
                 <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=1920&q=85" alt="Projet Architecture" class="slide-image">
                 <div class="slide-overlay">
-                    <div class="slide-content layout-container">
-                        <h2 class="slide-title">Musée d'Art Contemporain</h2>
-                        <p class="slide-location">Nantes, France</p>
+                    <div class="slide-content">
+                        <div class="slide-text-block">
+                            <h2 class="slide-title">Musée d'Art Contemporain</h2>
+                          <p class="slide-location">Nantes, France</p>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETS À LA UNE -->
+    <section class="featured-projects-section" id="projets-ala-une">
+        <h2 class="section-title">Projets à la Une</h2>
+
+        <div class="featured-projects-grid">
+            <!-- Projet 1 -->
+            <div class="featured-project-card">
+                <div class="project-frame">
+                    <div class="frame-inner-border">
+                        <div class="project-image-container">
+                            <img src="https://lamoureux-ricciotti.com/wp-content/themes/lr/images/pont_de_la_republique-lamoureux-ricciotti-homepage_couleur.jpg"
+                                 alt="Bibliothèque Humaniste" class="project-image">
+                            <div class="project-number-tag">
+                                <span class="project-number">05</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Bibliothèque Humaniste</h3>
+                    <p class="project-location">Sélestat (67)</p>
+                    <p class="project-date">Ouverture Janvier 2018</p>
+                </div>
+            </div>
+
+            <!-- Projet 2 -->
+            <div class="featured-project-card">
+                <div class="project-frame">
+                    <div class="frame-inner-border">
+                        <div class="project-image-container">
+                            <img src="https://lamoureux-ricciotti.com/wp-content/themes/lr/images/pont_de_la_republique-lamoureux-ricciotti-homepage_couleur.jpg"
+                                 alt="Centre Aquatique de l'Estuaire - Aquaparc" class="project-image">
+                            <div class="project-number-tag">
+                                <span class="project-number">06</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Centre Aquatique de l'Estuaire - Aquaparc</h3>
+                    <p class="project-location">Saint-Nazaire (44)</p>
+                    <p class="project-date">Livré Mars 2018</p>
+                </div>
+            </div>
+
+            <!-- Projet 3 -->
+            <div class="featured-project-card">
+                <div class="project-frame">
+                    <div class="frame-inner-border">
+                        <div class="project-image-container">
+                            <img src="https://lamoureux-ricciotti.com/wp-content/uploads/2015/07/lamoureux-ricciotti-pont-de-la-r%C3%A9publique-Lisa-Ricciotti-11.jpg"
+                                 alt="Pont André Levy / Pont de la République" class="project-image">
+                            <div class="project-number-tag">
+                                <span class="project-number">07</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Pont André Levy / Pont de la République</h3>
+                    <p class="project-location">Montpellier (34)</p>
+                    <p class="project-date">Études 2009 - Chantier janvier 2013 - Livraison 2014</p>
+                </div>
+            </div>
+
+            <!-- Projet 4 -->
+            <div class="featured-project-card">
+                <div class="project-frame">
+                    <div class="frame-inner-border">
+                        <div class="project-image-container">
+                            <img src="https://lamoureux-ricciotti.com/wp-content/uploads/2015/02/lamoureux_ricciotti_siegeiter5.jpg"
+                                 alt="Siège ITER" class="project-image">
+                            <div class="project-number-tag">
+                                <span class="project-number">08</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Siège ITER</h3>
+                    <p class="project-location">Cadarache (13)</p>
+                    <p class="project-date">Octobre 2012</p>
                 </div>
             </div>
         </div>
@@ -1697,6 +1801,7 @@
                 </p>
             </div>
             <div class="competence-card accent-diamond">
+                <img src="assets/img/icon-1.svg" alt="Enveloppe du bâtiment" class="accent-diamond-icon">
                 <h3 class="competence-title">Compétence Enveloppe</h3>
                 <p class="competence-description">
                     Solutions innovantes pour les enveloppes du bâtiment, alliant performance énergétique,
@@ -1864,10 +1969,25 @@
         const slides = document.querySelectorAll('.slide');
         const totalSlides = slides.length;
 
+        // Initialize first slide as active
+        document.addEventListener('DOMContentLoaded', function() {
+            if (slides.length > 0) {
+                showSlide(0); // Show first slide initially
+            }
+        });
+
         function showSlide(index) {
             slides.forEach(slide => slide.classList.remove('active'));
             currentSlide = (index + totalSlides) % totalSlides;
             slides[currentSlide].classList.add('active');
+
+            // Reset animation for slide text block
+            const textBlock = slides[currentSlide].querySelector('.slide-text-block');
+            if (textBlock) {
+                textBlock.style.animation = 'none';
+                textBlock.offsetHeight; // Trigger reflow
+                textBlock.style.animation = 'slideContentFadeIn 1s ease-out forwards';
+            }
         }
 
         function nextSlide() {
