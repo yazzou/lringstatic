@@ -1,0 +1,84 @@
+# Lamoureux & Ricciotti Project Links
+
+## Project URLs
+1. /projets/mediatheque-vaulx-en-velin/ - Médiathèque, Maison de quartier Léonard de Vinci - Vaulx-en-velin (69)
+2. /projets/recif-lab/ - Récif Lab - récif de déport de pression - Cap d'Agde, Ile de Brescou (34)
+3. /projets/campus-sud-des-metiers/ - Campus Sud des Métiers, Campus Régional d'Apprentissage - Nice (06)
+4. /projets/reamenagement-place-jean-jaures/ - Réaménagement de la place Jean Jaurès - La Plaine - Marseille (13)
+5. /projets/mats-de-telecommunication/ - Mâts de télécommunication Impression 3D
+6. /projets/tour-la-marseillaise/ - Tour La Marseillaise - Marseille (13)
+7. /projets/cineum-cinema-multiplexe/ - Cinéum cinéma multiplexe - Cannes-la-Bocca (06)
+8. /projets/college-josette-et-maurice-audin-650-eleves/ - Collège Josette et Maurice Audin, 650 élèves - Vitry-sur-Seine (94)
+9. /projets/centre-de-secours-gardanne/ - Centre de Secours Gardanne - Gardanne (13)
+10. /projets/centre-aquatique-de-lestuaire-aquaparc/ - Centre Aquatique de l'Estuaire - Aquaparc - Saint-Nazaire (44)
+11. /projets/bibliotheque-humaniste/ - Bibliothèque Humaniste - Sélestat (67)
+12. /projets/parking-silo-floirac/ - Parking Silo - Floirac (32)
+13. /projets/centre-international-dart-et-de-culture-ciac/ - Centre international d'art et de culture (CIAC) - Parc de la Boverie, Liège (Belgique)
+14. /projets/pavillon-52/ - Pavillon 52 - Quai Rambaud, Lyon (69)
+15. /projets/siege-de-lorganisation-internationale-iter/ - Siège ITER - Cadarache (13)
+16. /projets/immeuble-le-verone/ - Immeuble Le Vérone - Saint-Denis (93)
+17. /projets/pont-de-la-republique/ - Pont André Levy / Pont de la République - Montpellier (34)
+18. /projets/stade-jean-bouin/ - Stade Jean Bouin - Paris (13)
+19. /projets/musee-des-civilisations-deurope-et-de-la-mediterranee-mucem/ - Le MuCEM - Marseille (13)
+20. /projets/passerelle-de-leglise-saint-laurent/ - Passerelle de l'église Saint-Laurent (MuCEM) - Marseille (13)
+21. /projets/passerelle-du-fort-saint-jean/ - Passerelle du Fort Saint-Jean (MuCEM) - Marseille (13)
+22. /projets/maison-de-lescrime-et-des-arts-martiaux-a-aix-en-provence/ - Maison de l'escrime et des arts martiaux - Aix-en-Provence (13)
+23. /projets/gare-telepherique-de-saint-chaffrey/ - Gare Téléphérique - Saint-Chaffrey (05)
+24. /projets/les-enfants-du-paradis/ - Multiplex 'Les enfants du Paradis' - Chartres (28)
+25. /projets/halle-intermodale-de-la-gare-de-bordeaux-saint-jean/ - Halle intermodale de la gare Saint-Jean - Bordeaux (33)
+26. /projets/rectorat-de-lacademie-de-dijon/ - Rectorat de l'Académie de Dijon - Dijon (21)
+27. /projets/centre-de-secours-de-la-montagnette/ - Centre de secours de la Montagnette - Boulbon (13)
+28. /projets/centre-culturel-aime-cesaire/ - Centre culturel Aimé Césaire - Gennevilliers (92)
+29. /projets/bam-de-metz/ - Salle des musiques actuelles (BAM) - Metz (57)
+30. /projets/passerelle-du-pont-du-diable/ - Passerelle du Pont du Diable - Gignac (34)
+31. /projets/galerie-enrico-navarra/ - Galerie Enrico Navarra - Le Muy (83)
+
+## Progress Tracking
+- [ ] Extract main images
+- [ ] Extract project details
+- [ ] Download images to assets/img
+- [ ] Update project cards
+
+## Data Extracted
+
+### 1. Le MuCEM
+- URL: /projets/musee-des-civilisations-deurope-et-de-la-mediterranee-mucem/
+- Title: "Le MuCEM"
+- Location: Marseille (13)
+- Description: "Marseille a été, durant cette dernière année, la capitale européenne de la culture. Le MuCEM en est le bâtiment phare."
+- Details: "Études d'exécution | Livré Janvier 2013 | Surface: 15 500 m² | Méthode constructive: BFUP Poteaux, résille, structure de suspension"
+- Main Image: assets/img/mucem-main.jpg
+- Image URL: https://lring.synkso.com/wp-content/uploads/2015/02/lamoureux_ricciotti_mucem3.jpg
+
+### 2. Pont André Levy / Pont de la République
+- URL: /projets/pont-de-la-republique/
+- Title: "Pont André Levy / Pont de la République"
+- Location: Montpellier (34)
+- Details: "Mandataire Missions de maîtrise d'oeuvre | Pont à béquilles composé de 3 travées égales | matériau innovant, le BFUP blanc | 3 travées de 25 m de portée et 17 m de large"
+- Main Image: assets/img/pont-republique-main.jpg
+- Image URL: https://lring.synkso.com/wp-content/uploads/2015/07/lamoureux-ricciotti-pont-de-la-république-Lisa-Ricciotti-15.jpg
+
+### 3. Tour La Marseillaise
+- URL: /projets/tour-la-marseillaise/
+- Title: "Tour La Marseillaise"
+- Location: Marseille (13)
+- Description: "Légère et transparente, Jean Nouvel l'a imaginée pour se fondre dans le paysage"
+- Main Image: assets/img/tour-marseillaise-main.jpg
+- Image URL: https://lring.synkso.com/wp-content/uploads/2022/01/TourLaMarseillaise_01.jpg
+
+### 4. Stade Jean Bouin
+- URL: /projets/stade-jean-bouin/
+- Title: "Stade Jean Bouin"
+- Location: Paris (13)
+- Details: "Designed by Lamoureux & Ricciotti ingénierie from 2007-2013, with BFUP and glass components for the stadium's roof and facade"
+- Main Image: assets/img/stade-jean-bouin-main.jpg
+- Image URL: https://lring.synkso.com/wp-content/uploads/2015/04/jean-bouin-lamoureux-ricciotti-nanock-guihodo-2.jpg
+
+### 5. Centre Aquatique de l'Estuaire - Aquaparc
+- URL: /projets/centre-aquatique-de-lestuaire-aquaparc/
+- Title: "Centre Aquatique de l'Estuaire - Aquaparc"
+- Location: Saint-Nazaire (44)
+- Description: "La piscine Aquaparc de Saint-Nazaire est une réalisation exceptionnelle en raison de son architecture innovative."
+- Details: "Surface: 5,434 m² | Method: Bfup | Delivered: March 2018 | Client: CARENE (Saint-Nazaire Agglomération) | Master builder: Agence Coste"
+- Main Image: assets/img/centre-aquatique-main.jpg
+- Image URL: https://lring.synkso.com/wp-content/uploads/2020/05/15052020-04-centre-aquatique-StNazaire-1680-1050.jpg
