@@ -312,7 +312,7 @@
         .slide-content {
             position: absolute;
             bottom: 80px;
-            left: 60px;
+            left: calc((100vw - 1400px) / 2 - 11px);
             max-width: 900px;
             z-index: 15;
             opacity: 0;
@@ -536,12 +536,10 @@
 
         /* ========== FEATURED PROJECTS SECTION ========== */
         .featured-projects-section {
-            padding: 120px 60px;
-            background-image: url('assets/img/service-bg.png');
-            background-size: cover;
-            background-position: left center;
-            /* background-attachment: fixed; */
+            padding: 80px 60px 40px;
+            background: url('assets/img/company-bg.png') top left/cover;
             position: relative;
+            overflow: hidden;
         }
 
         .featured-projects-section::before {
@@ -789,13 +787,29 @@
 
         /* ========== ICONIC PROJECTS SECTION ========== */
         .iconic-projects-section {
-            padding: 120px 60px;
-            background: #ffffff;
+            padding: 60px 60px 0px;
+            background: url(assets/img/service-bg.png) bottom right no-repeat;
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 0px;
+        }
+
+        .iconic-projects-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.29);
+            z-index: 1;
         }
 
         .iconic-projects-container {
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .iconic-projects-header {
@@ -937,7 +951,7 @@
         footer {
             background: #ffffff;
             border-top: 2px solid #000000;
-            margin-top: 150px;
+            margin-top: 100px;
             padding: 80px 60px 40px;
         }
 
@@ -1707,13 +1721,10 @@
             <img src="assets/img/logo_v2-transparent.png" alt="ATELIER">
         </a>
         <ul class="nav-menu" id="navMenu">
-            <li><a href="#accueil">Accueil</a></li>
-            <li><a href="#featured-projects">Projets à la Une</a></li>
-            <li><a href="#iconic-projects">Projets Iconiques</a></li>
-            <li><a href="#services">Services</a></li>
+            <li><a href="#bureau">Bureau d'études</a></li>
             <li><a href="#projets">Projets</a></li>
-            <li><a href="#apropos">À propos</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#presse">Presse</a></li>
+            <li><a href="#book">Notre book</a></li>
             <li class="nav-social-icons">
                 <a href="https://facebook.com" target="_blank" class="nav-social-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1761,13 +1772,10 @@
                 </div>
             </div>
             <ul class="side-menu-nav">
-                <li><a href="#accueil" onclick="closeSideMenu()">Accueil</a></li>
-                <li><a href="#featured-projects" onclick="closeSideMenu()">Projets à la Une</a></li>
-                <li><a href="#iconic-projects" onclick="closeSideMenu()">Projets Iconiques</a></li>
-                <li><a href="#services" onclick="closeSideMenu()">Services</a></li>
+                <li><a href="#bureau" onclick="closeSideMenu()">Bureau d'études</a></li>
                 <li><a href="#projets" onclick="closeSideMenu()">Projets</a></li>
-                <li><a href="#apropos" onclick="closeSideMenu()">À propos</a></li>
-                <li><a href="#contact" onclick="closeSideMenu()">Contact</a></li>
+                <li><a href="#presse" onclick="closeSideMenu()">Presse</a></li>
+                <li><a href="#book" onclick="closeSideMenu()">Notre book</a></li>
             </ul>
 
             <!-- Social Media Icons at Bottom -->
@@ -2335,7 +2343,8 @@
             </div>
 
             <div class="footer-contact">
-                <h4 style="font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 25px; opacity: 0.4;">
+                <h4
+                    style="font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 25px; opacity: 0.4;">
                     Contact
                 </h4>
                 <p>contact@lring.fr</p>

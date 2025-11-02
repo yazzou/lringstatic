@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets - ATELIER Architecture & Ingénierie</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            overflow-x: hidden;
+            background: #ffffff;
+        }
+
+        /* ========== NAVIGATION ========== */
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 35px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), transparent);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 45px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: rgba(0, 0, 0, 0.9);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #000;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Navigation Social Icons */
+        .nav-social-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: 20px;
+            padding-left: 20px;
+            border-left: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 4px;
+            color: rgba(0, 0, 0, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-social-icon:hover {
+            background: #000;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ========== HERO SECTION (NO SLIDER) ========== */
+        .hero {
+            position: relative;
+            height: 50vh;
+            width: 100%;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse at center bottom, rgba(225, 215, 205, 0.5) 0%, transparent 70%),
+                linear-gradient(135deg, rgba(235, 225, 215, 0.9) 0%, rgba(245, 240, 235, 0.95) 100%),
+                repeating-linear-gradient(90deg,
+                    #e5e5e5 0px,
+                    #e5e5e5 100px,
+                    #ddd 100px,
+                    #ddd 102px,
+                    #e5e5e5 102px,
+                    #e5e5e5 200px),
+                repeating-linear-gradient(0deg,
+                    transparent 0px,
+                    transparent 40px,
+                    rgba(0, 0, 0, 0.03) 40px,
+                    rgba(0, 0, 0, 0.03) 42px);
+            background-size: 100% 100%, 100% 100%, 400px 100%, 100% 400px;
+            filter: contrast(1.1) brightness(1.2);
+        }
+
+        .hero-background::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(2px 2px at 20% 30%, rgba(100, 150, 200, 0.2) 1px, transparent 1px),
+                radial-gradient(2px 2px at 60% 70%, rgba(100, 120, 150, 0.15) 1px, transparent 1px),
+                radial-gradient(2px 2px at 15% 40%, rgba(100, 140, 180, 0.2) 1px, transparent 1px);
+            background-size: 250px 200px, 350px 300px, 180px 250px;
+            animation: shimmer 20s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.5; }
+            100% { opacity: 0.3; }
+        }
+
+        .hero-background::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                    rgba(255, 255, 255, 0.8) 0%,
+                    rgba(255, 255, 255, 0.6) 40%,
+                    rgba(255, 255, 255, 0.4) 70%,
+                    rgba(255, 255, 255, 0.2) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            max-width: 900px;
+        }
+
+        .hero-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .hero-title {
+            color: #fff;
+            font-size: clamp(50px, 9vw, 85px);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 35px;
+            letter-spacing: -2px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+        }
+
+        .hero-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 19px;
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 650px;
+            margin-bottom: 45px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.6s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========== PROJECT FILTERS ========== */
+        .filters-section {
+            padding: 60px 60px 40px;
+            background: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .filters-container {
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        /* Top Level Filters */
+        .top-filters {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 0;
+            flex-wrap: wrap;
+        }
+
+        .filter-button {
+            padding: 12px 24px;
+            background: #ffffff;
+            border: 2px solid #000000;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-button:hover {
+            background: #000000;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .filter-button.active {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        /* Sub Filters */
+        .sub-filters-container {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .sub-filters-container.active {
+            max-height: 200px;
+            opacity: 1;
+        }
+
+        .sub-filters-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .sub-filter-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #666666;
+            margin-bottom: 8px;
+            min-width: 120px;
+        }
+
+        .sub-filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .sub-filter-button {
+            padding: 8px 16px;
+            background: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .sub-filter-button:hover {
+            background: #000000;
+            color: #ffffff;
+            border-color: #000000;
+        }
+
+        .sub-filter-button.active {
+            background: #000000;
+            color: #ffffff;
+            border-color: #000000;
+        }
+
+        /* ========== PROJECTS GRID ========== */
+        .projects-section {
+            padding: 80px 60px;
+            background: #ffffff;
+        }
+
+        .projects-container {
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        /* Iconic Card List - Based on iconic-card */
+        .iconic-card-list {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            border: 2px solid #000000;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            background: #ffffff;
+        }
+
+        .iconic-card-list:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .iconic-card-list .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .iconic-card-list:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .iconic-card-list .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+        }
+
+        .iconic-card-list:hover .project-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .iconic-card-list .project-title {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .iconic-card-list .project-location {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+
+        .iconic-card-list .project-category {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* L-frame decoration (shared with iconic-card) */
+        .iconic-card-list::before {
+            content: '';
+            position: absolute;
+            top: 3%;
+            left: 2%;
+            width: 89%;
+            height: 93%;
+            border-top: 2px solid #ffffff;
+            border-right: 2px solid #ffffff;
+            z-index: 1;
+            opacity: 0;
+            transition: all 0.4s ease 0.1s;
+        }
+
+        .iconic-card-list::after {
+            content: '';
+            position: absolute;
+            top: -6%;
+            right: 3%;
+            width: 89%;
+            height: 100%;
+            left: 7%;
+            border-bottom: 2px solid #ffffff;
+            border-left: 2px solid #ffffff;
+            z-index: 1;
+            opacity: 0;
+            transition: all 0.4s ease 0.2s;
+        }
+
+        .iconic-card-list:hover::before,
+        .iconic-card-list:hover::after {
+            opacity: 1;
+        }
+
+        /* ========== RESPONSIVE DESIGN ========== */
+        @media (max-width: 1200px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 25px 30px;
+            }
+
+            .hero-content {
+                padding: 0 30px;
+            }
+
+            .filters-section {
+                padding: 40px 30px 30px;
+            }
+
+            .projects-section {
+                padding: 60px 30px;
+            }
+
+            .top-filters {
+                gap: 12px;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 10px;
+            }
+
+            .top-filters::after {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 10px;
+                width: 40px;
+                background: linear-gradient(to right, transparent, #ffffff);
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .filter-button {
+                padding: 10px 18px;
+                font-size: 12px;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            .sub-filter-buttons {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                flex-wrap: nowrap;
+                padding-bottom: 5px;
+            }
+
+            .sub-filter-button {
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 25px;
+            }
+
+            .iconic-card-list {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .iconic-card-list {
+                height: 300px;
+            }
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: #ffffff;
+            border-top: 2px solid #000000;
+            margin-top: 100px;
+            padding: 80px 60px 40px;
+        }
+
+        .footer-container {
+            max-width: 1800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 80px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-img {
+            height: 80px;
+            width: auto;
+            opacity: 0.8;
+        }
+
+        .footer-nav {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .footer-nav-column h4 {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            opacity: 0.4;
+        }
+
+        .footer-nav-column ul {
+            list-style: none;
+        }
+
+        .footer-nav-column ul li {
+            margin-bottom: 14px;
+        }
+
+        .footer-nav-column ul li a {
+            font-size: 14px;
+            font-weight: 400;
+            color: #000000;
+            text-decoration: none;
+            transition: font-weight 0.2s ease;
+        }
+
+        .footer-nav-column ul li a:hover {
+            font-weight: 700;
+        }
+
+        .footer-contact p {
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 12px;
+            opacity: 0.6;
+        }
+
+        .footer-bottom {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 35px;
+        }
+
+        .footer-legal a {
+            font-size: 12px;
+            font-weight: 400;
+            color: #000000;
+            text-decoration: none;
+            transition: font-weight 0.2s ease;
+        }
+
+        .footer-legal a:hover {
+            font-weight: 700;
+        }
+
+        .footer-copyright {
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <a href="inverted-colors-architecture.html" class="logo">
+            <img src="assets/img/logo_v2-transparent.png" alt="ATELIER">
+        </a>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#bureau">Bureau d'études</a></li>
+            <li><a href="#projets" class="active">Projets</a></li>
+            <li><a href="#presse">Presse</a></li>
+            <li><a href="#book">Notre book</a></li>
+            <li class="nav-social-icons">
+                <a href="https://facebook.com" target="_blank" class="nav-social-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="nav-social-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                </a>
+                <a href="mailto:contact@atelier.com" class="nav-social-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <div class="hero-label">Découvrir</div>
+            <h1 class="hero-title">Nos Projets</h1>
+            <p class="hero-description">
+                Une sélection de réalisations qui illustrent notre expertise en architecture et ingénierie à travers des projets innovants et emblématiques.
+            </p>
+        </div>
+    </section>
+
+    <!-- PROJECT FILTERS -->
+    <section class="filters-section">
+        <div class="filters-container">
+            <!-- Top Level Filters -->
+            <div class="top-filters">
+                <button class="filter-button" data-category="culture">CULTURE</button>
+                <button class="filter-button" data-category="tertiaire">TERTIAIRE</button>
+                <button class="filter-button" data-category="hebergement">HÉBERGEMENT</button>
+                <button class="filter-button" data-category="hotel">HÔTEL</button>
+                <button class="filter-button" data-category="sport">SPORT</button>
+                <button class="filter-button" data-category="enseignement">ENSEIGNEMENT</button>
+                <button class="filter-button" data-category="infrastructure">INFRASTRUCTURE</button>
+                <button class="filter-button" data-category="genie-civil">GÉNIE CIVIL</button>
+                <button class="filter-button" data-category="oeuvre-art">OEUVRE D'ART</button>
+            </div>
+
+            <!-- Sub Filters Container -->
+            <div class="sub-filters-container" id="subFilters">
+                <!-- Mission Filters -->
+                <div class="sub-filters-row">
+                    <div class="sub-filter-label">Mission:</div>
+                    <div class="sub-filter-buttons">
+                        <button class="sub-filter-button" data-subcategory="mission-maitrise-oeuvre">Maîtrise d'œuvre</button>
+                        <button class="sub-filter-button" data-subcategory="mission-etudes-execution">Études d'exécution</button>
+                        <button class="sub-filter-button" data-subcategory="mission-rd">R&D</button>
+                    </div>
+                </div>
+
+                <!-- Programme Filters -->
+                <div class="sub-filters-row">
+                    <div class="sub-filter-label">Programme:</div>
+                    <div class="sub-filter-buttons">
+                        <button class="sub-filter-button" data-subcategory="programme-neuf">Construction neuve</button>
+                        <button class="sub-filter-button" data-subcategory="programme-rehabilitation">Réhabilitation</button>
+                        <button class="sub-filter-button" data-subcategory="programme-patrimonial">Patrimonial</button>
+                        <button class="sub-filter-button" data-subcategory="programme-innovation">Innovation</button>
+                        <button class="sub-filter-button" data-subcategory="programme-bim">Projet BIM</button>
+                    </div>
+                </div>
+
+                <!-- Méthode Constructive Filters -->
+                <div class="sub-filters-row">
+                    <div class="sub-filter-label">Méthode:</div>
+                    <div class="sub-filter-buttons">
+                        <button class="sub-filter-button" data-subcategory="methode-gros-oeuvre">Gros œuvre complexe</button>
+                        <button class="sub-filter-button" data-subcategory="methode-prefabrique">Éléments préfabriqués</button>
+                        <button class="sub-filter-button" data-subcategory="methode-facade">Façade</button>
+                        <button class="sub-filter-button" data-subcategory="methode-bfup">BFUP</button>
+                        <button class="sub-filter-button" data-subcategory="methode-bois">Bois</button>
+                        <button class="sub-filter-button" data-subcategory="methode-pierre">Pierre</button>
+                        <button class="sub-filter-button" data-subcategory="methode-charpente">Charpente métallique</button>
+                    </div>
+                </div>
+
+                <!-- Référence Filters -->
+                <div class="sub-filters-row">
+                    <div class="sub-filter-label">Référence:</div>
+                    <div class="sub-filter-buttons">
+                        <button class="sub-filter-button" data-subcategory="ref-3ans">Réf moins de 3 ans</button>
+                        <button class="sub-filter-button" data-subcategory="ref-5ans">Réf moins de 5 ans</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="projects-section">
+        <div class="projects-container">
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Project Card 1 -->
+                <div class="iconic-card-list" data-category="culture" data-mission="mission-maitrise-oeuvre" data-programme="programme-neuf" data-methode="methode-gros-oeuvre" data-ref="ref-3ans">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&q=85" alt="Centre Culturel Moderne" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Centre Culturel Moderne</h3>
+                        <p class="project-location">Paris, France</p>
+                        <p class="project-category">Culture</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="iconic-card-list" data-category="tertiaire" data-mission="mission-etudes-execution" data-programme="programme-rehabilitation" data-methode="methode-facade" data-ref="ref-5ans">
+                    <img src="https://images.unsplash.com/photo-1497366216548-375f7034cef8?w=400&q=85" alt="Bureaux Innovants" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Bureaux Innovants</h3>
+                        <p class="project-location">Lyon, France</p>
+                        <p class="project-category">Tertiaire</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="iconic-card-list" data-category="sport" data-mission="mission-maitrise-oeuvre" data-programme="programme-neuf" data-methode="methode-charpente" data-ref="ref-3ans">
+                    <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=400&q=85" alt="Complexe Sportif" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Complexe Sportif</h3>
+                        <p class="project-location">Marseille, France</p>
+                        <p class="project-category">Sport</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 -->
+                <div class="iconic-card-list" data-category="enseignement" data-mission="mission-rd" data-programme="programme-innovation" data-methode="methode-bfup" data-ref="ref-3ans">
+                    <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&q=85" alt="Campus Universitaire" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Campus Universitaire</h3>
+                        <p class="project-location">Bordeaux, France</p>
+                        <p class="project-category">Enseignement</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 5 -->
+                <div class="iconic-card-list" data-category="infrastructure" data-mission="mission-maitrise-oeuvre" data-programme="programme-patrimonial" data-methode="methode-pierre" data-ref="ref-5ans">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&q=85" alt="Pont Historique" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Pont Historique</h3>
+                        <p class="project-location">Toulouse, France</p>
+                        <p class="project-category">Infrastructure</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 6 -->
+                <div class="iconic-card-list" data-category="hotel" data-mission="mission-etudes-execution" data-programme="programme-neuf" data-methode="methode-bois" data-ref="ref-3ans">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=85" alt="Hôtel de Luxe" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Hôtel de Luxe</h3>
+                        <p class="project-location">Nice, France</p>
+                        <p class="project-category">Hôtel</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="assets/img/logo_v2-transparent.png" alt="LRING" class="footer-logo-img">
+                </div>
+            </div>
+            <div class="footer-nav">
+                <div class="footer-nav-column">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#bureau">Bureau d'études</a></li>
+                        <li><a href="#projets">Projets</a></li>
+                        <li><a href="#book">Notre book</a></li>
+                        <li><a href="#presse">Presse</a></li>
+                    </ul>
+                </div>
+                <div class="footer-nav-column">
+                    <h4>Compétences</h4>
+                    <ul>
+                        <li><a href="#structure">Structure</a></li>
+                        <li><a href="#enveloppe">Enveloppe</a></li>
+                        <li><a href="#rd">Recherche et Développement</a></li>
+                        <li><a href="#bim">BIM</a></li>
+                    </ul>
+                </div>
+                <div class="footer-nav-column">
+                    <h4>Suivez-nous</h4>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <h4 style="font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 25px; opacity: 0.4;">
+                    Contact
+                </h4>
+                <p>contact@lring.fr</p>
+                <p>+33 (0)1 XX XX XX XX</p>
+                <p>Paris, France</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-legal">
+                <a href="#">Mentions Légales</a>
+                <a href="#">Conditions Générales</a>
+                <a href="#">Politique de Confidentialité</a>
+            </div>
+            <div class="footer-copyright">
+                © 2025 LRING - Tous droits réservés
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-button');
+        const subFilterButtons = document.querySelectorAll('.sub-filter-button');
+        const subFiltersContainer = document.getElementById('subFilters');
+        const projectCards = document.querySelectorAll('.iconic-card-list');
+        let activeCategory = null;
+        let activeSubFilters = new Set();
+
+        // Top level filter click
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.dataset.category;
+
+                if (activeCategory === category) {
+                    // Toggle off if same category
+                    button.classList.remove('active');
+                    subFiltersContainer.classList.remove('active');
+                    activeCategory = null;
+                    activeSubFilters.clear();
+                    filterProjects();
+                } else {
+                    // Set new active category
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    subFiltersContainer.classList.add('active');
+                    activeCategory = category;
+                    activeSubFilters.clear();
+                    filterProjects();
+                }
+            });
+        });
+
+        // Sub filter click
+        subFilterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const subcategory = button.dataset.subcategory;
+
+                if (activeSubFilters.has(subcategory)) {
+                    activeSubFilters.delete(subcategory);
+                    button.classList.remove('active');
+                } else {
+                    activeSubFilters.add(subcategory);
+                    button.classList.add('active');
+                }
+
+                filterProjects();
+            });
+        });
+
+        // Filter projects
+        function filterProjects() {
+            projectCards.forEach(card => {
+                let show = true;
+
+                if (activeCategory) {
+                    const cardCategory = card.dataset.category;
+                    show = cardCategory === activeCategory;
+                }
+
+                if (show && activeSubFilters.size > 0) {
+                    show = false;
+                    activeSubFilters.forEach(subFilter => {
+                        if (card.dataset[subFilter]) {
+                            show = true;
+                        }
+                    });
+                }
+
+                card.style.display = show ? 'block' : 'none';
+            });
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
