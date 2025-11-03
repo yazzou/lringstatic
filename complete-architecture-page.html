@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATELIER - Architecture & Ingénierie</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            overflow-x: hidden;
+            background: #0a0a0a;
+        }
+
+        /* ========== NAVIGATION ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 35px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 20px 60px;
+            background: rgba(10,10,10,0.95);
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: #fff;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 45px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            background: #0f0f0f;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at center bottom, rgba(30,40,50,0.5) 0%, transparent 70%),
+                linear-gradient(135deg, rgba(20,30,40,0.9) 0%, rgba(10,15,20,0.95) 100%),
+                repeating-linear-gradient(
+                    90deg,
+                    #1a1a1a 0px,
+                    #1a1a1a 100px,
+                    #222 100px,
+                    #222 102px,
+                    #1a1a1a 102px,
+                    #1a1a1a 200px
+                ),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent 0px,
+                    transparent 40px,
+                    rgba(255,255,255,0.03) 40px,
+                    rgba(255,255,255,0.03) 42px
+                );
+            background-size: 100% 100%, 100% 100%, 400px 100%, 100% 400px;
+            filter: contrast(1.1) brightness(0.8);
+        }
+
+        .hero-background::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, rgba(255,200,100,0.3) 1px, transparent 1px),
+                radial-gradient(2px 2px at 60% 70%, rgba(255,220,150,0.2) 1px, transparent 1px),
+                radial-gradient(2px 2px at 15% 40%, rgba(255,210,120,0.3) 1px, transparent 1px);
+            background-size: 250px 200px, 350px 300px, 180px 250px;
+            animation: shimmer 20s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0.5; }
+        }
+
+        .hero-background::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.2) 0%,
+                rgba(0,0,0,0.4) 40%,
+                rgba(0,0,0,0.6) 70%,
+                rgba(0,0,0,0.8) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            max-width: 900px;
+        }
+
+        .hero-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .hero-title {
+            color: #fff;
+            font-size: clamp(50px, 9vw, 85px);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 35px;
+            letter-spacing: -2px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+        }
+
+        .hero-description {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 19px;
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 650px;
+            margin-bottom: 45px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.6s forwards;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 25px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.8s forwards;
+        }
+
+        .hero-meta span {
+            position: relative;
+        }
+
+        .hero-meta span:not(:last-child)::after {
+            content: '•';
+            position: absolute;
+            right: -14px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ========== SERVICES SECTION ========== */
+        .services-section {
+            padding: 120px 60px;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.01) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.01) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .services-title {
+            font-size: 48px;
+            font-weight: 600;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .services-subtitle {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        .services-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .services-row-top {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .services-row-bottom {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .service-card.prominent {
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(255,255,255,0.1) 0%, 
+                transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .prominent .service-icon {
+            width: 60px;
+            height: 60px;
+        }
+
+        /* Icon styles */
+        .icon-structure::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, #888 30%, #888 32%, transparent 32%),
+                        linear-gradient(-45deg, transparent 30%, #888 30%, #888 32%, transparent 32%),
+                        linear-gradient(90deg, transparent 48%, #888 48%, #888 52%, transparent 52%),
+                        linear-gradient(180deg, transparent 48%, #888 48%, #888 52%, transparent 52%);
+        }
+
+        .icon-envelope::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 60%;
+            top: 20%;
+            border: 2px solid #888;
+            border-radius: 4px;
+        }
+
+        .icon-envelope::after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 70%;
+            top: 15%;
+            left: 15%;
+            background: linear-gradient(135deg, transparent 48%, #888 48%, #888 52%, transparent 52%),
+                        linear-gradient(-135deg, transparent 48%, #888 48%, #888 52%, transparent 52%);
+        }
+
+        .icon-research::before {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            top: 10%;
+            left: 10%;
+            border: 3px solid #888;
+            border-radius: 50%;
+        }
+
+        .icon-research::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            height: 30%;
+            background: #888;
+            bottom: 10%;
+            right: 15%;
+            transform: rotate(-45deg);
+            transform-origin: top left;
+        }
+
+        .icon-lifecycle::before {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 70%;
+            top: 15%;
+            left: 15%;
+            border: 3px solid #888;
+            border-radius: 50%;
+            border-top-color: transparent;
+            border-right-color: transparent;
+        }
+
+        .icon-lifecycle::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 8px 12px 8px;
+            border-color: transparent transparent #888 transparent;
+            top: 16%;
+            right: 22%;
+            transform: rotate(-45deg);
+        }
+
+        .icon-bim::before {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 50%;
+            top: 25%;
+            left: 20%;
+            background: #888;
+            transform: perspective(20px) rotateX(20deg);
+            opacity: 0.3;
+        }
+
+        .icon-bim::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 50%;
+            top: 15%;
+            left: 20%;
+            border: 2px solid #888;
+            transform: perspective(20px) rotateX(20deg);
+        }
+
+        .service-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+            color: #fff;
+        }
+
+        .prominent .service-title {
+            font-size: 24px;
+        }
+
+        .service-description {
+            font-size: 14px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 25px;
+        }
+
+        .prominent .service-description {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .service-link::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+
+        .service-link:hover {
+            color: #fff;
+        }
+
+        .service-link:hover::after {
+            transform: translateX(5px);
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== MOBILE MENU ========== */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .services-section {
+                padding: 80px 40px;
+            }
+
+            .services-row-bottom {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .service-card {
+                padding: 35px;
+            }
+
+            .service-card.prominent {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 25px 30px;
+            }
+
+            .navbar.scrolled {
+                padding: 15px 30px;
+            }
+
+            .nav-menu {
+                gap: 30px;
+            }
+
+            .nav-menu a {
+                font-size: 13px;
+            }
+
+            .hero-content {
+                padding: 0 30px;
+            }
+
+            .services-section {
+                padding: 60px 25px;
+            }
+
+            .services-title {
+                font-size: 36px;
+            }
+
+            .services-row-top {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .services-row-bottom {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                padding: 30px;
+            }
+
+            .service-card.prominent {
+                padding: 35px;
+            }
+
+            .prominent .service-title {
+                font-size: 20px;
+            }
+
+            .service-title {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 16px;
+                letter-spacing: 2px;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 250px;
+                height: calc(100vh - 70px);
+                background: rgba(10,10,10,0.98);
+                flex-direction: column;
+                padding: 40px 30px;
+                gap: 20px;
+                transition: right 0.3s ease;
+                backdrop-filter: blur(10px);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-label {
+                font-size: 10px;
+                letter-spacing: 3px;
+            }
+
+            .hero-title {
+                font-size: 38px;
+                letter-spacing: -1px;
+            }
+
+            .hero-description {
+                font-size: 15px;
+                line-height: 1.5;
+            }
+
+            .hero-meta {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">ATELIER</a>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projets">Projets</a></li>
+            <li><a href="#apropos">À propos</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <p class="hero-label">Architecture Urbaine</p>
+            <h1 class="hero-title">Tour Métropolitaine</h1>
+            <p class="hero-description">
+                Un projet emblématique redéfinissant l'horizon urbain avec une approche 
+                structurelle innovante
+            </p>
+            <div class="hero-meta">
+                <span>2024</span>
+                <span>Paris</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="services-container">
+            <!-- Header -->
+            <div class="services-header fade-in">
+                <h2 class="services-title">NOS SERVICES</h2>
+                <p class="services-subtitle">Excellence et innovation au service de vos projets</p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="services-grid">
+                <!-- Top Row - 2 Prominent Boxes -->
+                <div class="services-row-top">
+                    <!-- Structure -->
+                    <div class="service-card prominent fade-in">
+                        <div class="service-icon icon-structure"></div>
+                        <h3 class="service-title">Structure</h3>
+                        <p class="service-description">
+                            Conception et calcul de structures innovantes pour des projets d'exception. 
+                            Notre expertise technique nous permet de créer des solutions structurelles 
+                            optimisées alliant sécurité, durabilité et élégance architecturale.
+                        </p>
+                        <a href="#" class="service-link">Découvrir</a>
+                    </div>
+
+                    <!-- Enveloppe -->
+                    <div class="service-card prominent fade-in">
+                        <div class="service-icon icon-envelope"></div>
+                        <h3 class="service-title">Enveloppe</h3>
+                        <p class="service-description">
+                            Maîtrise des enveloppes architecturales alliant esthétique et performance. 
+                            Nous concevons des façades innovantes qui répondent aux défis énergétiques 
+                            tout en sublimant l'identité de vos projets.
+                        </p>
+                        <a href="#" class="service-link">Découvrir</a>
+                    </div>
+                </div>
+
+                <!-- Bottom Row - 3 Boxes -->
+                <div class="services-row-bottom">
+                    <!-- Recherche et Développement -->
+                    <div class="service-card fade-in">
+                        <div class="service-icon icon-research"></div>
+                        <h3 class="service-title">Recherche et Développement</h3>
+                        <p class="service-description">
+                            Innovation continue pour repousser les limites de l'ingénierie et explorer 
+                            de nouvelles solutions constructives.
+                        </p>
+                        <a href="#" class="service-link">Explorer</a>
+                    </div>
+
+                    <!-- Analyse du cycle de vie -->
+                    <div class="service-card fade-in">
+                        <div class="service-icon icon-lifecycle"></div>
+                        <h3 class="service-title">Analyse du cycle de vie</h3>
+                        <p class="service-description">
+                            Évaluation environnementale complète de nos projets pour minimiser leur 
+                            impact écologique sur toute leur durée de vie.
+                        </p>
+                        <a href="#" class="service-link">En savoir plus</a>
+                    </div>
+
+                    <!-- BIM -->
+                    <div class="service-card fade-in">
+                        <div class="service-icon icon-bim"></div>
+                        <h3 class="service-title">BIM</h3>
+                        <p class="service-description">
+                            Modélisation numérique avancée pour une collaboration optimale entre tous 
+                            les acteurs du projet.
+                        </p>
+                        <a href="#" class="service-link">Découvrir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.menu-toggle') && !e.target.closest('.nav-menu')) {
+                document.getElementById('navMenu').classList.remove('active');
+            }
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

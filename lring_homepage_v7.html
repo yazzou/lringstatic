@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LRING - Bureau d'Études</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -303,13 +305,11 @@
             inset: 0;
             display: flex;
             align-items: flex-end;
-            background: linear-gradient(
-                to bottom,
-                rgba(255, 255, 255, 0.9) 0%,
-                rgba(255, 255, 255, 0.6) 40%,
-                rgba(255, 255, 255, 0.3) 75%,
-                rgba(255, 255, 255, 0) 100%
-            );
+            background: linear-gradient(to bottom,
+                    rgba(255, 255, 255, 0.9) 0%,
+                    rgba(255, 255, 255, 0.6) 40%,
+                    rgba(255, 255, 255, 0.3) 75%,
+                    rgba(255, 255, 255, 0) 100%);
             padding: 80px 60px 60px;
         }
 
@@ -354,7 +354,7 @@
             transform: translateX(-50%);
             width: 100vw;
             height: calc(100% + 200px);
-            background-image: linear-gradient(285deg, rgb(255 255 255 / 68%) 0%, rgba(255, 255, 255, 0.94) 100%), url('assets/img/bk_pont_musem.png');
+            /* background-image: linear-gradient(285deg, rgb(255 255 255 / 68%) 0%, rgba(255, 255, 255, 0.94) 100%), url('assets/img/bk_pont_musem.png');*/
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -585,7 +585,7 @@
             transition: opacity 0.6s ease 0.15s;
         }
 
-        .project-overlay > * {
+        .project-overlay>* {
             position: relative;
             z-index: 2;
         }
@@ -933,6 +933,7 @@
             }
 
         }
+
         .social-icons {
             display: flex;
             gap: 20px;
@@ -1166,7 +1167,7 @@
             background: var(--text-primary);
         }
 
-        .accent-diamond::after w{
+        .accent-diamond::after w {
             top: -32px;
             right: 42px;
             width: 48px;
@@ -1285,6 +1286,7 @@
             transition: opacity 0.7s ease, transform 0.7s ease;
             overflow: hidden;
         }
+
         .project-overlay::before {
             content: '';
             position: absolute;
@@ -1295,7 +1297,7 @@
             transition: opacity 0.6s ease 0.15s;
         }
 
-        .project-overlay > * {
+        .project-overlay>* {
             position: relative;
             z-index: 2;
         }
@@ -1511,6 +1513,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- ENHANCED HEADER - Centered Logo -->
     <header class="site-header">
@@ -1557,29 +1560,33 @@
                     <a href="#presse">Presse</a>
                     <a href="#book">Notre book</a>
                 </nav>
-           
+
                 <div class="top-bar-social">
                     <a href="#" aria-label="Instagram">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img">
-                            <rect x="3.5" y="3.5" width="17" height="17" rx="4" ry="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                            <rect x="3.5" y="3.5" width="17" height="17" rx="4" ry="4" fill="none" stroke="currentColor"
+                                stroke-width="1.5" />
+                            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5" />
+                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
                         </svg>
                     </a>
                     <a href="#" aria-label="Facebook">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img">
-                            <path d="M14 8h2.5l.4-3H14c-2.5 0-4 1.5-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-1c0-.8.3-1 1-1Z" fill="currentColor"/>
+                            <path d="M14 8h2.5l.4-3H14c-2.5 0-4 1.5-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-1c0-.8.3-1 1-1Z"
+                                fill="currentColor" />
                         </svg>
                     </a>
                     <a href="mailto:contact@lring.fr" aria-label="Contact">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img">
-                            <rect x="3.5" y="5" width="17" height="14" rx="1.5" ry="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M4.5 7l7.5 5 7.5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="3.5" y="5" width="17" height="14" rx="1.5" ry="1.5" fill="none"
+                                stroke="currentColor" stroke-width="1.5" />
+                            <path d="M4.5 7l7.5 5 7.5-5" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </a>
                 </div>
 
- </div>
+            </div>
 
 
 
@@ -1606,10 +1613,12 @@
         <div class="side-menu-footer">
             <div class="side-menu-social">
                 <a href="#" class="social-icons" style="display: flex;">
-                    <span style="width: 38px; height: 38px; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 11px;">ig</span>
+                    <span
+                        style="width: 38px; height: 38px; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 11px;">ig</span>
                 </a>
                 <a href="#" class="social-icons" style="display: flex;">
-                    <span style="width: 38px; height: 38px; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 11px;">fb</span>
+                    <span
+                        style="width: 38px; height: 38px; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 11px;">fb</span>
                 </a>
             </div>
         </div>
@@ -1626,7 +1635,8 @@
                 </div>
             </div>
             <div class="slide">
-                <img src="https://images.unsplash.com/photo-1486718448742-163732cd1544?w=1920&q=85" alt="Projet Architecture" class="slide-image">
+                <img src="https://images.unsplash.com/photo-1486718448742-163732cd1544?w=1920&q=85"
+                    alt="Projet Architecture" class="slide-image">
                 <div class="slide-overlay">
                     <div class="slide-content">
                         <h2 class="slide-title">Centre Culturel Métropole</h2>
@@ -1635,7 +1645,8 @@
                 </div>
             </div>
             <div class="slide">
-                <img src="https://images.unsplash.com/photo-1478860409698-8707f313ee8b?w=1920&q=85" alt="Projet Architecture" class="slide-image">
+                <img src="https://images.unsplash.com/photo-1478860409698-8707f313ee8b?w=1920&q=85"
+                    alt="Projet Architecture" class="slide-image">
                 <div class="slide-overlay">
                     <div class="slide-content">
                         <h2 class="slide-title">Complexe Commercial Lumière</h2>
@@ -1644,7 +1655,8 @@
                 </div>
             </div>
             <div class="slide">
-                <img src="https://images.unsplash.com/photo-1503387837-b154d5074bd2?w=1920&q=85" alt="Projet Architecture" class="slide-image">
+                <img src="https://images.unsplash.com/photo-1503387837-b154d5074bd2?w=1920&q=85"
+                    alt="Projet Architecture" class="slide-image">
                 <div class="slide-overlay">
                     <div class="slide-content">
                         <h2 class="slide-title">Immeuble de Bureaux Zenith</h2>
@@ -1653,7 +1665,8 @@
                 </div>
             </div>
             <div class="slide">
-                <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=1920&q=85" alt="Projet Architecture" class="slide-image">
+                <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=1920&q=85"
+                    alt="Projet Architecture" class="slide-image">
                 <div class="slide-overlay">
                     <div class="slide-content">
                         <h2 class="slide-title">Musée d'Art Contemporain</h2>
@@ -1716,28 +1729,32 @@
             <h2 class="section-title">Projets à la Une</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900&q=85" alt="Projet" class="project-image">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900&q=85" alt="Projet"
+                        class="project-image">
                     <div class="project-overlay">
                         <h3 class="project-title">Éco-Quartier Confluence</h3>
                         <p class="project-location">Lyon, France</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?w=900&q=85" alt="Projet" class="project-image">
+                    <img src="https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?w=900&q=85" alt="Projet"
+                        class="project-image">
                     <div class="project-overlay">
                         <h3 class="project-title">Tour Mixte Odyssée</h3>
                         <p class="project-location">Paris, France</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?w=900&q=85" alt="Projet" class="project-image">
+                    <img src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?w=900&q=85" alt="Projet"
+                        class="project-image">
                     <div class="project-overlay">
                         <h3 class="project-title">Bibliothèque Universitaire</h3>
                         <p class="project-location">Toulouse, France</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=900&q=85" alt="Projet" class="project-image">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=900&q=85" alt="Projet"
+                        class="project-image">
                     <div class="project-overlay">
                         <h3 class="project-title">Résidence Premium Aurore</h3>
                         <p class="project-location">Nice, France</p>
@@ -1820,7 +1837,9 @@
             </div>
 
             <div class="footer-contact">
-                <h4 style="font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 25px; opacity: 0.4;">Contact</h4>
+                <h4
+                    style="font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 25px; opacity: 0.4;">
+                    Contact</h4>
                 <p>contact@lring.fr</p>
                 <p>+33 (0)1 XX XX XX XX</p>
                 <p>Paris, France</p>
@@ -1885,7 +1904,7 @@
         const sideMenu = document.getElementById('sideMenu');
         let lastScrollTop = 0;
 
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
             // Show burger menu when scrolling down past 200px
@@ -1899,7 +1918,7 @@
         });
 
         // Toggle side menu
-        burgerMenu.addEventListener('click', function() {
+        burgerMenu.addEventListener('click', function () {
             burgerMenu.classList.toggle('active');
             sideMenu.classList.toggle('active');
         });
@@ -1907,7 +1926,7 @@
         // Close menu when clicking on a link
         const sideMenuLinks = document.querySelectorAll('.side-menu nav a');
         sideMenuLinks.forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function () {
                 burgerMenu.classList.remove('active');
                 sideMenu.classList.remove('active');
             });
@@ -1928,4 +1947,5 @@
         });
     </script>
 </body>
+
 </html>
