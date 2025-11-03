@@ -164,7 +164,7 @@
         .hero-content {
             position: absolute;
             bottom: 0px;
-            left: calc((100vw - 1400px) / 2 - 204px);
+            left: 60px;
             max-width: 900px;
             z-index: 15;
             opacity: 0;
@@ -584,7 +584,9 @@
             }
 
             .hero-content {
-                padding: 0 30px;
+                left: 30px;
+                right: 30px;
+                max-width: calc(100% - 60px);
             }
 
             .filters-section {
@@ -662,6 +664,12 @@
         }
 
         @media (max-width: 480px) {
+            .hero-content {
+                left: 20px;
+                right: 20px;
+                max-width: calc(100% - 40px);
+            }
+
             .projects-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
