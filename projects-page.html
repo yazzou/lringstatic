@@ -349,8 +349,8 @@
             margin-top: 40px;
         }
 
-        /* Iconic Card List - Based on iconic-card */
-        .iconic-card-list {
+        /* ICONIQUES Card List - Based on ICONIQUES-card */
+        .ICONIQUES-card-list {
             position: relative;
             height: 450px;
             overflow: hidden;
@@ -360,23 +360,23 @@
             background: #ffffff;
         }
 
-        .iconic-card-list:hover {
+        .ICONIQUES-card-list:hover {
             transform: translateY(-8px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .iconic-card-list .project-image {
+        .ICONIQUES-card-list .project-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
 
-        .iconic-card-list:hover .project-image {
+        .ICONIQUES-card-list:hover .project-image {
             transform: scale(1.05);
         }
 
-        .iconic-card-list .project-overlay {
+        .ICONIQUES-card-list .project-overlay {
             position: absolute;
             top: 0;
             left: 0;
@@ -392,12 +392,12 @@
             transition: all 0.4s ease;
         }
 
-        .iconic-card-list:hover .project-overlay {
+        .ICONIQUES-card-list:hover .project-overlay {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .iconic-card-list .project-title {
+        .ICONIQUES-card-list .project-title {
             color: #ffffff;
             font-size: 20px;
             font-weight: 600;
@@ -406,7 +406,7 @@
             line-height: 1.2;
         }
 
-        .iconic-card-list .project-location {
+        .ICONIQUES-card-list .project-location {
             color: rgba(255, 255, 255, 0.9);
             font-size: 15px;
             font-weight: 400;
@@ -414,7 +414,7 @@
             line-height: 1.3;
         }
 
-        .iconic-card-list .project-category {
+        .ICONIQUES-card-list .project-category {
             color: rgba(255, 255, 255, 0.7);
             font-size: 12px;
             font-weight: 500;
@@ -448,7 +448,7 @@
             right: 43px;
         }
 
-        .project-label.iconic {
+        .project-label.ICONIQUES {
             background: none;
             text-orientation: mixed;
             padding: 12px 6px;
@@ -465,21 +465,21 @@
             border-right: 2px solid white;
         }
 
-        .iconic-card-list:hover .project-label {
+        .ICONIQUES-card-list:hover .project-label {
             background: rgba(0, 0, 0, 0.95);
             border-color: rgba(255, 255, 255, 0.5);
             transform: translateY(-2px);
             color: #ffffff;
         }
 
-        .iconic-card-list:hover .project-label.nouveau {
+        .ICONIQUES-card-list:hover .project-label.nouveau {
             background: rgb(255 255 255 / 98%);
             border-color: rgb(255 255 255 / 60%);
             box-shadow: 0 4px 12px #dbd2d2;
             color: #000000;
         }
 
-        .iconic-card-list:hover .project-label.iconic {
+        .ICONIQUES-card-list:hover .project-label.ICONIQUES {
             background: none;
             text-orientation: mixed;
             padding: 12px 6px;
@@ -508,8 +508,8 @@
             transform: translateY(0);
         }
 
-        /* L-frame decoration (shared with iconic-card) */
-        .iconic-card-list::before {
+        /* L-frame decoration (shared with ICONIQUES-card) */
+        .ICONIQUES-card-list::before {
             content: '';
             position: absolute;
             top: 3%;
@@ -524,7 +524,7 @@
             transition: opacity 0.3s ease-out 0.2s, height 0.8s ease-out 0.2s, width 0.6s ease-out 1s;
         }
 
-        .iconic-card-list::after {
+        .ICONIQUES-card-list::after {
             content: '';
             position: absolute;
             top: -6%;
@@ -540,25 +540,25 @@
             transition: opacity 0.3s ease-out 0.5s, height 0.8s ease-out 0.5s, width 0.6s ease-out 1.3s;
         }
 
-        .iconic-card-list.fade-in.visible::before {
+        .ICONIQUES-card-list.fade-in.visible::before {
             opacity: 1;
             height: 93%;
             width: 89%;
         }
 
-        .iconic-card-list.fade-in.visible::after {
+        .ICONIQUES-card-list.fade-in.visible::after {
             opacity: 1;
             height: 100%;
             width: 89%;
         }
 
-        .iconic-card-list.fade-in.visible .project-overlay {
+        .ICONIQUES-card-list.fade-in.visible .project-overlay {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .iconic-card-list:hover::before,
-        .iconic-card-list:hover::after {
+        .ICONIQUES-card-list:hover::before,
+        .ICONIQUES-card-list:hover::after {
             opacity: 1;
         }
 
@@ -640,7 +640,7 @@
                 gap: 25px;
             }
 
-            .iconic-card-list {
+            .ICONIQUES-card-list {
                 height: 400px;
             }
 
@@ -656,7 +656,7 @@
                 height: 4px;
             }
 
-            .iconic-card-list.has-iconic::before {
+            .ICONIQUES-card-list.has-ICONIQUES::before {
                 font-size: 7px;
                 padding-top: 15px;
             }
@@ -674,7 +674,7 @@
                 gap: 20px;
             }
 
-            .iconic-card-list {
+            .ICONIQUES-card-list {
                 height: 350px;
             }
 
@@ -691,7 +691,7 @@
             }
 
             /* Disable vertical text on mobile - too small to read */
-            .iconic-card-list.has-iconic::before {
+            .ICONIQUES-card-list.has-ICONIQUES::before {
                 content: '';
                 font-size: 0;
                 padding-top: 0;
@@ -926,10 +926,10 @@
         <div class="projects-container">
             <div class="projects-grid" id="projectsGrid">
                 <!-- CULTURE Projects -->
-                <div class="iconic-card-list fade-in" data-category="culture" data-mission="mission-maitrise-oeuvre"
+                <div class="ICONIQUES-card-list fade-in" data-category="culture" data-mission="mission-maitrise-oeuvre"
                     data-programme="programme-neuf" data-methode="methode-gros-oeuvre" data-ref="ref-3ans">
                     <span class="project-label nouveau">NOUVEAU</span>
-                    <span class="project-label iconic">ICONIC</span>
+                    <span class="project-label ICONIQUES">ICONIQUES</span>
                     <img src="assets/img/mucem-main.jpg" alt="Le MuCEM" class="project-image">
                     <div class="project-overlay">
                         <h3 class="project-title">LE MUCEM</h3>
@@ -938,7 +938,7 @@
                     </div>
                 </div>
 
-                <div class="iconic-card-list fade-in" data-category="culture" data-mission="mission-etudes-execution"
+                <div class="ICONIQUES-card-list fade-in" data-category="culture" data-mission="mission-etudes-execution"
                     data-programme="programme-neuf" data-methode="methode-gros-oeuvre" data-ref="ref-3ans">
                     <span class="project-label nouveau">NOUVEAU</span>
                     <img src="assets/img/pont-republique-main.jpg" alt="Pont de la République" class="project-image">
@@ -949,9 +949,10 @@
                     </div>
                 </div>
 
-                <div class="iconic-card-list fade-in" data-category="tertiaire" data-mission="mission-maitrise-oeuvre"
-                    data-programme="programme-neuf" data-methode="methode-gros-oeuvre" data-ref="ref-3ans">
-                    <span class="project-label iconic">ICONIC</span>
+                <div class="ICONIQUES-card-list fade-in" data-category="tertiaire"
+                    data-mission="mission-maitrise-oeuvre" data-programme="programme-neuf"
+                    data-methode="methode-gros-oeuvre" data-ref="ref-3ans">
+                    <span class="project-label ICONIQUES">ICONIQUES</span>
                     <img src="assets/img/tour-marseillaise-main.jpg" alt="Tour La Marseillaise" class="project-image">
                     <div class="project-overlay">
                         <h3 class="project-title">TOUR LA MARSEILLAISE</h3>
@@ -960,9 +961,9 @@
                     </div>
                 </div>
 
-                <div class="iconic-card-list fade-in" data-category="sport" data-mission="mission-maitrise-oeuvre"
+                <div class="ICONIQUES-card-list fade-in" data-category="sport" data-mission="mission-maitrise-oeuvre"
                     data-programme="programme-neuf" data-methode="methode-charpente" data-ref="ref-3ans">
-                    <span class="project-label iconic">ICONIC</span>
+                    <span class="project-label ICONIQUES">ICONIQUES</span>
                     <img src="assets/img/stade-jean-bouin-main.jpg" alt="Stade Jean Bouin" class="project-image">
                     <div class="project-overlay">
                         <h3 class="project-title">STADE JEAN BOUIN</h3>
@@ -972,7 +973,7 @@
                 </div>
 
                 <!-- CULTURE Projects -->
-                <div class="iconic-card-list fade-in" data-category="culture" data-mission="mission-etudes-execution"
+                <div class="ICONIQUES-card-list fade-in" data-category="culture" data-mission="mission-etudes-execution"
                     data-programme="programme-neuf" data-methode="methode-pierre" data-ref="ref-5ans">
                     <span class="project-label nouveau">NOUVEAU</span>
                     <img src="assets/img/bibliotheque-humaniste-main.jpg" alt="Bibliothèque Humaniste"
@@ -984,9 +985,10 @@
                     </div>
                 </div>
 
-                <div class="iconic-card-list fade-in" data-category="tertiaire" data-mission="mission-maitrise-oeuvre"
-                    data-programme="programme-neuf" data-methode="methode-gros-oeuvre" data-ref="ref-3ans">
-                    <span class="project-label iconic">ICONIC</span>
+                <div class="ICONIQUES-card-list fade-in" data-category="tertiaire"
+                    data-mission="mission-maitrise-oeuvre" data-programme="programme-neuf"
+                    data-methode="methode-gros-oeuvre" data-ref="ref-3ans">
+                    <span class="project-label ICONIQUES">ICONIQUES</span>
                     <img src="assets/img/siege-iter-main.jpg" alt="Siège ITER" class="project-image">
                     <div class="project-overlay">
                         <h3 class="project-title">SIÈGE ITER</h3>
@@ -995,9 +997,9 @@
                     </div>
                 </div>
 
-                <div class="iconic-card-list fade-in" data-category="culture" data-mission="mission-maitrise-oeuvre"
+                <div class="ICONIQUES-card-list fade-in" data-category="culture" data-mission="mission-maitrise-oeuvre"
                     data-programme="programme-neuf" data-methode="methode-charpente" data-ref="ref-3ans">
-                    <span class="project-label iconic">ICONIC</span>
+                    <span class="project-label ICONIQUES">ICONIQUES</span>
                     <img src="assets/img/passerelle-fort-saint-jean-main.jpg" alt="Passerelle du Fort Saint-Jean"
                         class="project-image">
                     <div class="project-overlay">
@@ -1007,7 +1009,7 @@
                     </div>
                 </div>
 
-                <div class="iconic-card-list fade-in" data-category="infrastructure"
+                <div class="ICONIQUES-card-list fade-in" data-category="infrastructure"
                     data-mission="mission-maitrise-oeuvre" data-programme="programme-neuf"
                     data-methode="methode-gros-oeuvre" data-ref="ref-3ans">
                     <span class="project-label nouveau">NOUVEAU</span>
@@ -1020,7 +1022,7 @@
                 </div>
 
                 <!-- CULTURE Projects -->
-                <div class="iconic-card-list fade-in" data-category="culture" data-mission="mission-maitrise-oeuvre"
+                <div class="ICONIQUES-card-list fade-in" data-category="culture" data-mission="mission-maitrise-oeuvre"
                     data-programme="programme-neuf" data-methode="methode-bois" data-ref="ref-3ans">
                     <span class="project-label nouveau">NOUVEAU</span>
                     <img src="assets/img/cineum-main.jpg" alt="Cinéum cinéma multiplexe" class="project-image">
@@ -1031,7 +1033,7 @@
                     </div>
                 </div>
 
-                <div class="iconic-card-list fade-in" data-category="enseignement"
+                <div class="ICONIQUES-card-list fade-in" data-category="enseignement"
                     data-mission="mission-maitrise-oeuvre" data-programme="programme-neuf"
                     data-methode="methode-gros-oeuvre" data-ref="ref-3ans">
                     <span class="project-label nouveau">NOUVEAU</span>
@@ -1044,7 +1046,7 @@
                     </div>
                 </div>
 
-                <div class="iconic-card-list fade-in" data-category="sport" data-mission="mission-maitrise-oeuvre"
+                <div class="ICONIQUES-card-list fade-in" data-category="sport" data-mission="mission-maitrise-oeuvre"
                     data-programme="programme-neuf" data-methode="methode-pierre" data-ref="ref-3ans">
                     <span class="project-label nouveau">NOUVEAU</span>
                     <img src="assets/img/maison-escrime-main.jpg" alt="Maison de l'Escrime et des Arts Martiaux"
@@ -1057,7 +1059,7 @@
                 </div>
 
                 <!-- SPORT Projects -->
-                <div class="iconic-card-list fade-in" data-category="sport" data-mission="mission-etudes-execution"
+                <div class="ICONIQUES-card-list fade-in" data-category="sport" data-mission="mission-etudes-execution"
                     data-programme="programme-neuf" data-methode="methode-bfup" data-ref="ref-3ans">
                     <span class="project-label nouveau">NOUVEAU</span>
                     <img src="assets/img/centre-aquatique-main.jpg" alt="Centre Aquatique de l'Estuaire"
@@ -1069,7 +1071,7 @@
                     </div>
                 </div>
 
-                <div class="iconic-card-list fade-in" data-category="hotel" data-mission="mission-maitrise-oeuvre"
+                <div class="ICONIQUES-card-list fade-in" data-category="hotel" data-mission="mission-maitrise-oeuvre"
                     data-programme="programme-rehabilitation" data-methode="methode-facade" data-ref="ref-5ans">
                     <img src="assets/img/siege-iter-main.jpg" alt="Boutique Hotel" class="project-image">
                     <div class="project-overlay">
@@ -1079,9 +1081,9 @@
                     </div>
                 </div>
 
-                <div class="iconic-card-list fade-in" data-category="hotel" data-mission="mission-rd"
+                <div class="ICONIQUES-card-list fade-in" data-category="hotel" data-mission="mission-rd"
                     data-programme="programme-innovation" data-methode="methode-bfup" data-ref="ref-3ans">
-                    <span class="project-label iconic">ICONIC</span>
+                    <span class="project-label ICONIQUES">ICONIQUES</span>
                     <img src="assets/img/parking-silo-main.jpg" alt="Resort Spa" class="project-image">
                     <div class="project-overlay">
                         <h3 class="project-title">Resort Spa</h3>
@@ -1091,9 +1093,9 @@
                 </div>
 
                 <!-- SPORT Projects -->
-                <div class="iconic-card-list fade-in" data-category="sport" data-mission="mission-maitrise-oeuvre"
+                <div class="ICONIQUES-card-list fade-in" data-category="sport" data-mission="mission-maitrise-oeuvre"
                     data-programme="programme-neuf" data-methode="methode-charpente" data-ref="ref-3ans">
-                    <span class="project-label iconic">ICONIC</span>
+                    <span class="project-label ICONIQUES">ICONIQUES</span>
                     <img src="assets/img/passerelle-fort-saint-jean-main.jpg" alt="Complexe Sportif"
                         class="project-image">
                     <div class="project-overlay">
@@ -1103,7 +1105,7 @@
                     </div>
                 </div>
 
-                <div class="iconic-card-list fade-in" data-category="sport" data-mission="mission-etudes-execution"
+                <div class="ICONIQUES-card-list fade-in" data-category="sport" data-mission="mission-etudes-execution"
                     data-programme="programme-rehabilitation" data-methode="methode-gros-oeuvre" data-ref="ref-5ans">
                     <img src="assets/img/cineum-main.jpg" alt="Stade Municipal" class="project-image">
                     <div class="project-overlay">
@@ -1113,7 +1115,7 @@
                     </div>
                 </div>
 
-                <div class="iconic-card-list fade-in" data-category="sport" data-mission="mission-maitrise-oeuvre"
+                <div class="ICONIQUES-card-list fade-in" data-category="sport" data-mission="mission-maitrise-oeuvre"
                     data-programme="programme-neuf" data-methode="methode-prefabrique" data-ref="ref-3ans">
                     <img src="assets/img/college-audin-main.jpg" alt="Centre Aquatique" class="project-image">
                     <div class="project-overlay">
@@ -1124,10 +1126,10 @@
                 </div>
 
                 <!-- ENSEIGNEMENT Projects -->
-                <div class="iconic-card-list fade-in" data-category="enseignement"
+                <div class="ICONIQUES-card-list fade-in" data-category="enseignement"
                     data-mission="mission-maitrise-oeuvre" data-programme="programme-neuf"
                     data-methode="methode-gros-oeuvre" data-ref="ref-3ans">
-                    <span class="project-label iconic">ICONIC</span>
+                    <span class="project-label ICONIQUES">ICONIQUES</span>
                     <img src="assets/img/campus-sud-metiers-main.png" alt="Campus Sud des Métiers"
                         class="project-image">
                     <div class="project-overlay">
@@ -1137,7 +1139,7 @@
                     </div>
                 </div>
 
-                <div class="iconic-card-list fade-in" data-category="enseignement"
+                <div class="ICONIQUES-card-list fade-in" data-category="enseignement"
                     data-mission="mission-maitrise-oeuvre" data-programme="programme-neuf" data-methode="methode-bois"
                     data-ref="ref-3ans">
                     <img src="assets/img/tour-marseillaise-main.jpg" alt="Tour La Marseillaise - Vue 2"
@@ -1149,7 +1151,7 @@
                     </div>
                 </div>
 
-                <div class="iconic-card-list fade-in" data-category="enseignement"
+                <div class="ICONIQUES-card-list fade-in" data-category="enseignement"
                     data-mission="mission-etudes-execution" data-programme="programme-rehabilitation"
                     data-methode="methode-pierre" data-ref="ref-5ans">
                     <img src="assets/img/stade-jean-bouin-main.jpg" alt="Lycée Technique" class="project-image">
@@ -1161,10 +1163,10 @@
                 </div>
 
                 <!-- INFRASTRUCTURE Projects -->
-                <div class="iconic-card-list fade-in" data-category="infrastructure"
+                <div class="ICONIQUES-card-list fade-in" data-category="infrastructure"
                     data-mission="mission-maitrise-oeuvre" data-programme="programme-patrimonial"
                     data-methode="methode-pierre" data-ref="ref-5ans">
-                    <span class="project-label iconic">ICONIC</span>
+                    <span class="project-label ICONIQUES">ICONIQUES</span>
                     <img src="assets/img/mucem-main.jpg" alt="Pont Historique" class="project-image">
                     <div class="project-overlay">
                         <h3 class="project-title">Pont Historique</h3>
@@ -1173,7 +1175,7 @@
                     </div>
                 </div>
 
-                <div class="iconic-card-list fade-in" data-category="infrastructure"
+                <div class="ICONIQUES-card-list fade-in" data-category="infrastructure"
                     data-mission="mission-etudes-execution" data-programme="programme-neuf"
                     data-methode="methode-gros-oeuvre" data-ref="ref-3ans">
                     <img src="assets/img/pont-republique-main.jpg" alt="Gare Ferroviaire" class="project-image">
@@ -1184,7 +1186,7 @@
                     </div>
                 </div>
 
-                <div class="iconic-card-list fade-in" data-category="infrastructure"
+                <div class="ICONIQUES-card-list fade-in" data-category="infrastructure"
                     data-mission="mission-maitrise-oeuvre" data-programme="programme-patrimonial"
                     data-methode="methode-charpente" data-ref="ref-5ans">
                     <img src="assets/img/centre-aquatique-main.jpg" alt="Viaduc Routier" class="project-image">
@@ -1196,8 +1198,9 @@
                 </div>
 
                 <!-- GÉNIE CIVIL Projects -->
-                <div class="iconic-card-list fade-in" data-category="genie-civil" data-mission="mission-maitrise-oeuvre"
-                    data-programme="programme-neuf" data-methode="methode-gros-oeuvre" data-ref="ref-3ans">
+                <div class="ICONIQUES-card-list fade-in" data-category="genie-civil"
+                    data-mission="mission-maitrise-oeuvre" data-programme="programme-neuf"
+                    data-methode="methode-gros-oeuvre" data-ref="ref-3ans">
                     <img src="assets/img/tour-marseillaise-main.jpg" alt="Centre Commercial" class="project-image">
                     <div class="project-overlay">
                         <h3 class="project-title">Centre Commercial</h3>
@@ -1206,7 +1209,7 @@
                     </div>
                 </div>
 
-                <div class="iconic-card-list fade-in" data-category="genie-civil"
+                <div class="ICONIQUES-card-list fade-in" data-category="genie-civil"
                     data-mission="mission-etudes-execution" data-programme="programme-rehabilitation"
                     data-methode="methode-facade" data-ref="ref-5ans">
                     <img src="assets/img/maison-escrime-main.jpg" alt="Centre Hospitalier" class="project-image">
@@ -1217,7 +1220,7 @@
                     </div>
                 </div>
 
-                <div class="iconic-card-list fade-in" data-category="genie-civil" data-mission="mission-rd"
+                <div class="ICONIQUES-card-list fade-in" data-category="genie-civil" data-mission="mission-rd"
                     data-programme="programme-bim" data-methode="methode-prefabrique" data-ref="ref-3ans">
                     <img src="assets/img/bibliotheque-humaniste-main.jpg" alt="Entrepôt Logistique"
                         class="project-image">
@@ -1293,7 +1296,7 @@
         const filterButtons = document.querySelectorAll('.filter-button');
         const subFilterButtons = document.querySelectorAll('.sub-filter-button');
         const subFiltersContainer = document.getElementById('subFilters');
-        const projectCards = document.querySelectorAll('.iconic-card-list');
+        const projectCards = document.querySelectorAll('.ICONIQUES-card-list');
         let activeCategory = null;
         let activeSubFilters = new Set();
 
@@ -1399,8 +1402,8 @@
             threshold: 0.3
         });
 
-        // Observe all iconic-card-list elements
-        document.querySelectorAll('.iconic-card-list').forEach(card => {
+        // Observe all ICONIQUES-card-list elements
+        document.querySelectorAll('.ICONIQUES-card-list').forEach(card => {
             projectCardObserver.observe(card);
         });
 
