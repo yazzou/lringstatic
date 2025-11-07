@@ -344,11 +344,12 @@
             font-size: clamp(36px, 6vw, 64px);
             font-weight: 700;
             line-height: 1;
-            margin-bottom: 35px;
+            margin: 20px 0 35px 0;
             letter-spacing: -2px;
             text-transform: uppercase;
             opacity: 0;
             animation: fadeInUp 0.8s ease-out 0.4s forwards;
+            white-space: nowrap;
         }
 
         .slide.active .slide-title {
@@ -373,12 +374,15 @@
         .slide-meta {
             display: flex;
             gap: 25px;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 14px;
-            font-weight: 400;
+            color: rgb(255 255 255);
+            font-size: 27px;
+            font-weight: 600;
             letter-spacing: 1px;
             opacity: 0;
-            animation: fadeInUp 0.8s ease-out 0.8s forwards;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+            margin-bottom: 0;
+            margin-left: 46px;
+            text-transform: uppercase;
         }
 
         .slide.active .slide-meta {
@@ -389,11 +393,22 @@
             position: relative;
         }
 
+        .slide-meta span:first-child::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 29px;
+            height: 21px;
+            background-color: rgb(255 255 255);
+        }
+
         .slide-meta span:not(:last-child)::after {
             content: '•';
             position: absolute;
-            right: -14px;
-            color: rgba(255, 255, 255, 0.5);
+            right: -18px;
+            color: rgb(255 255 255);
         }
 
         /* Slide Indicators (Discreet) */
@@ -478,36 +493,38 @@
         .services-grid {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 50px;
         }
 
         .services-row-top {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            gap: 50px;
         }
 
         .services-row-bottom {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 50px;
         }
 
         .service-card {
             background: rgba(0, 0, 0, 0.03);
             border: 1px solid rgba(0, 0, 0, 0.08);
             /* border-radius: 12px; */
-            padding: 40px;
+            padding: 80px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
             cursor: pointer;
+            min-height: 250px;
         }
 
         .service-card.prominent {
-            padding: 50px;
+            padding: 100px;
             background: rgba(0, 0, 0, 0.05);
             border: 1px solid rgba(0, 0, 0, 0.12);
+            min-height: 350px;
         }
 
         .service-card::before {
@@ -1851,64 +1868,60 @@
                     <img src="assets/img/mucem-main.jpg" alt="Le MuCEM" class="slide-image">
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
-                        <!-- <p class="slide-label">Architecture Culturelle</p> -->
+                        <div class="slide-meta">
+                            <span>2013</span>
+                            <span>Marseille</span>
+                        </div>
                         <h1 class="slide-title">LE MUCEM</h1>
                         <!-- <p class="slide-description">
                             Marseille a été, durant cette dernière année, la capitale européenne de la culture.
                             Le MuCEM en est le bâtiment phare par son approche structurelle innovante
                         </p> -->
-                        <div class="slide-meta">
-                            <span>2013</span>
-                            <span>Marseille</span>
-                        </div>
                     </div>
                 </div>
                 <div class="slide">
                     <img src="assets/img/pont-republique-main.jpg" alt="Pont de la République" class="slide-image">
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
-                        <!-- <p class="slide-label">Ouvrage d'Art</p> -->
+                        <div class="slide-meta">
+                            <span>2014</span>
+                            <span>Montpellier</span>
+                        </div>
                         <h1 class="slide-title">PONT DE LA RÉPUBLIQUE</h1>
                         <!-- <p class="slide-description">
                             Un pont à béquilles innovant en BFUP blanc composé de 3 travées égales,
                             une prouesse technique alliant esthétique et performance
                         </p> -->
-                        <div class="slide-meta">
-                            <span>2014</span>
-                            <span>Montpellier</span>
-                        </div>
                     </div>
                 </div>
                 <div class="slide">
                     <img src="assets/img/tour-marseillaise-main.jpg" alt="Tour La Marseillaise" class="slide-image">
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
-                        <!-- <p class="slide-label">Tour Bureautique</p> -->
+                        <div class="slide-meta">
+                            <span>2021</span>
+                            <span>Marseille</span>
+                        </div>
                         <h1 class="slide-title">TOUR LA MARSEILLAISE</h1>
                         <!-- <p class="slide-description">
                             Légère et transparente, Jean Nouvel l'a imaginée pour se fondre dans le paysage,
                             une silhouette emblématique du skyline marseillais
                         </p> -->
-                        <div class="slide-meta">
-                            <span>2021</span>
-                            <span>Marseille</span>
-                        </div>
                     </div>
                 </div>
                 <div class="slide">
                     <img src="assets/img/stade-jean-bouin-main.jpg" alt="Stade Jean Bouin" class="slide-image">
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
-                        <!-- <p class="slide-label">Équipement Sportif</p> -->
+                        <div class="slide-meta">
+                            <span>2013</span>
+                            <span>Paris</span>
+                        </div>
                         <h1 class="slide-title">STADE JEAN BOUIN</h1>
                         <!-- <p class="slide-description">
                             Conçu de 2007-2013 avec des composants en BFUP et verre,
                             une structure innovante pour l'enceinte sportive parisienne
                         </p> -->
-                        <div class="slide-meta">
-                            <span>2013</span>
-                            <span>Paris</span>
-                        </div>
                     </div>
                 </div>
                 <div class="slide">
@@ -1916,16 +1929,15 @@
                         class="slide-image">
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
-                        <!-- <p class="slide-label">Équipement Public</p> -->
+                        <div class="slide-meta">
+                            <span>2018</span>
+                            <span>Saint-Nazaire</span>
+                        </div>
                         <h1 class="slide-title">CENTRE AQUATIQUE AQUAPARC</h1>
                         <!-- <p class="slide-description">
                             Une réalisation exceptionnelle en raison de son architecture innovante
                             avec 95 poteaux BFUP pour la structure
                         </p> -->
-                        <div class="slide-meta">
-                            <span>2018</span>
-                            <span>Saint-Nazaire</span>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1941,7 +1953,7 @@
             <!-- Hero Content -->
             <div class="hero-content">
                 <p class="hero-label">Ingénierie d'Excellence</p>
-                <h1 class="hero-title">LAMOUREUX & RICCIOTTI</h1>
+                <!-- <h1 class="hero-title">LAMOUREUX & RICCIOTTI</h1> -->
                 <p class="hero-description">
                     Une sélection de projets emblématiques témoignant de notre savoir-faire
                     en architecture et ingénierie structurelle innovante
@@ -1958,7 +1970,7 @@
         <div class="services-container">
             <!-- Header -->
             <div class="services-header fade-in">
-                <h2 class="services-title">Nos competences</h2>
+                <!-- <h2 class="services-title">Nos competences</h2> -->
                 <p class="services-subtitle">Excellence et innovation au service de vos projets</p>
             </div>
 
@@ -1971,7 +1983,7 @@
                         <div class="service-icon">
                             <img src="assets/img/house.svg" alt="Structure" class="structure-svg-icon">
                         </div>
-                        <h3 class="service-title">Structure</h3>
+                        <!-- <h3 class="service-title">Structure</h3> -->
                         <p class="service-description">
                             Conception et calcul de structures innovantes pour des projets d'exception.
                             Notre expertise technique nous permet de créer des solutions structurelles
@@ -1985,7 +1997,7 @@
                         <div class="service-icon">
                             <img src="assets/img/icon-1.svg" alt="Enveloppe du bâtiment" class="envelope-svg-icon">
                         </div>
-                        <h3 class="service-title">Enveloppe</h3>
+                        <!-- <h3 class="service-title">Enveloppe</h3> -->
                         <p class="service-description">
                             Maîtrise des enveloppes architecturales alliant esthétique et performance.
                             Nous concevons des façades innovantes qui répondent aux défis énergétiques
@@ -2003,7 +2015,7 @@
                             <img src="assets/img/drawing.svg" alt="Recherche et Développement"
                                 class="research-svg-icon">
                         </div>
-                        <h3 class="service-title">Recherche et Développement</h3>
+                        <!-- <h3 class="service-title">Recherche et Développement</h3> -->
                         <p class="service-description">
                             Innovation continue pour repousser les limites de l'ingénierie et explorer
                             de nouvelles solutions constructives.
@@ -2017,7 +2029,7 @@
                             <img src="assets/img/asset-management.svg" alt="Analyse du cycle de vie"
                                 class="lifecycle-svg-icon">
                         </div>
-                        <h3 class="service-title">Analyse du cycle de vie</h3>
+                        <!-- <h3 class="service-title">Analyse du cycle de vie</h3> -->
                         <p class="service-description">
                             Évaluation environnementale complète de nos projets pour minimiser leur
                             impact écologique sur toute leur durée de vie.
@@ -2031,7 +2043,7 @@
                             <img src="assets/img/bim.svg" alt="BIM - Building Information Modeling"
                                 class="bim-svg-icon">
                         </div>
-                        <h3 class="service-title">BIM</h3>
+                        <!-- <h3 class="service-title">BIM</h3> -->
                         <p class="service-description">
                             Modélisation numérique avancée pour une collaboration optimale entre tous
                             les acteurs du projet.
@@ -2047,7 +2059,7 @@
     <section class="featured-projects-section" id="featured-projects">
         <div class="featured-projects-container">
             <div class="featured-projects-header">
-                <h2 class="featured-projects-title">Projets à la Une</h2>
+                <!-- <h2 class="featured-projects-title">Projets à la Une</h2> -->
                 <p class="featured-projects-subtitle">Réalisations emblématiques de notre savoir-faire</p>
             </div>
 
@@ -2060,7 +2072,7 @@
                                 <img src="https://lamoureux-ricciotti.com/wp-content/themes/lr/images/pont_de_la_republique-lamoureux-ricciotti-homepage_couleur.jpg"
                                     alt="Bibliothèque Humaniste" class="project-image">
                                 <div class="project-info-overlay">
-                                    <h3 class="project-title-overlay">Bibliothèque Humaniste</h3>
+                                    <!-- <h3 class="project-title-overlay">Bibliothèque Humaniste</h3> -->
                                     <p class="project-location-overlay">Sélestat (67)</p>
                                     <p class="project-date-overlay">Ouverture Janvier 2018</p>
                                 </div>
@@ -2077,7 +2089,7 @@
                                 <img src="https://lamoureux-ricciotti.com/wp-content/themes/lr/images/pont_de_la_republique-lamoureux-ricciotti-homepage_couleur.jpg"
                                     alt="Centre Aquatique de l'Estuaire - Aquaparc" class="project-image">
                                 <div class="project-info-overlay">
-                                    <h3 class="project-title-overlay">Centre Aquatique de l'Estuaire - Aquaparc</h3>
+                                    <!-- <h3 class="project-title-overlay">Centre Aquatique de l'Estuaire - Aquaparc</h3> -->
                                     <p class="project-location-overlay">Saint-Nazaire (44)</p>
                                     <p class="project-date-overlay">Livré Mars 2018</p>
                                 </div>
@@ -2094,7 +2106,7 @@
                                 <img src="https://lamoureux-ricciotti.com/wp-content/uploads/2015/07/lamoureux-ricciotti-pont-de-la-r%C3%A9publique-Lisa-Ricciotti-11.jpg"
                                     alt="Pont André Levy / Pont de la République" class="project-image">
                                 <div class="project-info-overlay">
-                                    <h3 class="project-title-overlay">Pont André Levy / Pont de la République</h3>
+                                    <!-- <h3 class="project-title-overlay">Pont André Levy / Pont de la République</h3> -->
                                     <p class="project-location-overlay">Montpellier (34)</p>
                                     <p class="project-date-overlay">Études 2009 - Chantier janvier 2013 - Livraison 2014
                                     </p>
@@ -2112,7 +2124,7 @@
                                 <img src="https://lamoureux-ricciotti.com/wp-content/uploads/2015/02/lamoureux_ricciotti_siegeiter5.jpg"
                                     alt="Siège ITER" class="project-image">
                                 <div class="project-info-overlay">
-                                    <h3 class="project-title-overlay">Siège ITER</h3>
+                                    <!-- <h3 class="project-title-overlay">Siège ITER</h3> -->
                                     <p class="project-location-overlay">Cadarache (13)</p>
                                     <p class="project-date-overlay">Octobre 2012</p>
                                 </div>
@@ -2128,7 +2140,7 @@
     <section class="ICONIQUES-projects-section" id="ICONIQUES-projects">
         <div class="ICONIQUES-projects-container">
             <div class="ICONIQUES-projects-header fade-in">
-                <h2 class="ICONIQUES-projects-title">Projets ICONIQUES</h2>
+                <!-- <h2 class="ICONIQUES-projects-title">Projets ICONIQUES</h2> -->
                 <p class="ICONIQUES-projects-subtitle">Réalisations marquantes de notre portfolio</p>
             </div>
 
@@ -2136,7 +2148,7 @@
                 <div class="ICONIQUES-card fade-in">
                     <img src="assets/img/iconic_1.png" alt="Projet Iconique" class="project-image">
                     <div class="project-overlay">
-                        <h3 class="project-title">Stade JEAN BOUIN</h3>
+                        <!-- <h3 class="project-title">Stade JEAN BOUIN</h3> -->
                         <p class="project-location">Lille, France</p>
                     </div>
                 </div>
@@ -2144,7 +2156,7 @@
                 <div class="ICONIQUES-card fade-in">
                     <img src="assets/img/iconic_2.png" alt="Projet Iconique" class="project-image">
                     <div class="project-overlay">
-                        <h3 class="project-title">Pont de la République</h3>
+                        <!-- <h3 class="project-title">Pont de la République</h3> -->
                         <p class="project-location">Montpellier, France</p>
                     </div>
                 </div>
@@ -2152,7 +2164,7 @@
                 <div class="ICONIQUES-card fade-in">
                     <img src="assets/img/iconic_3.png" alt="Projet Iconique" class="project-image">
                     <div class="project-overlay">
-                        <h3 class="project-title">Gare TGV Montpellier Sud de France</h3>
+                        <!-- <h3 class="project-title">Gare TGV Montpellier Sud de France</h3> -->
                         <p class="project-location">Montpellier, France</p>
                     </div>
                 </div>
@@ -2160,7 +2172,7 @@
                 <div class="ICONIQUES-card fade-in">
                     <img src="assets/img/iconic_4.png" alt="Projet Iconique" class="project-image">
                     <div class="project-overlay">
-                        <h3 class="project-title">Centre Commercial Lumière</h3>
+                        <!-- <h3 class="project-title">Centre Commercial Lumière</h3> -->
                         <p class="project-location">Lyon, France</p>
                     </div>
                 </div>
