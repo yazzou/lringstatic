@@ -761,6 +761,7 @@
             background: url('assets/img/company-bg.png') top left/cover; */
             position: relative;
             overflow: hidden;
+            margin-top: 18px;
         }
 
         .featured-projects-section::before {
@@ -783,7 +784,7 @@
 
         .featured-projects-header {
             text-align: center;
-            margin-bottom: 80px;
+            /* margin-bottom: 80px; */
         }
 
         .featured-projects-title {
@@ -805,7 +806,7 @@
         .featured-projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2px;
+            gap: 8px;
             margin-bottom: 60px;
         }
 
@@ -821,7 +822,7 @@
         .project-frame {
             position: relative;
             background: #ffffff;
-            padding: 20px;
+            /* padding: 20px; */
         }
 
         .frame-inner-border {
@@ -832,7 +833,7 @@
             overflow: hidden;
         }
 
-        .project-frame::before {
+        /* .project-frame::before {
             content: '';
             position: absolute;
             top: 1%;
@@ -845,7 +846,7 @@
             transition: width 1.2s cubic-bezier(0.4, 0.0, 0.2, 1), left 1.2s cubic-bezier(0.4, 0.0, 0.2, 1);
         }
 
-        /* Animation trigger when cards are visible */
+        // Animation trigger when cards are visible
         .featured-project-card.animate-frame .project-frame::before {
             width: calc(99% - 41%);
             left: 43%;
@@ -855,7 +856,7 @@
             content: '';
             position: absolute;
             top: -12px;
-            /* bottom: -18%; */
+            // bottom: -18%;
             left: 98.99%;
             right: 1px;
             background: #000000;
@@ -867,10 +868,10 @@
             transition: height 1.2s cubic-bezier(0.4, 0.0, 0.2, 1) 0.3s;
         }
 
-        /* Animation trigger when cards are visible */
+        // Animation trigger when cards are visible
         .featured-project-card.animate-frame .project-frame::after {
             height: 229px;
-        }
+        } */
 
         .featured-project-card.animate-frame .project-info-overlay {
             transform: scaleX(1);
@@ -971,9 +972,9 @@
         /* Project info overlay inside frame */
         .project-info-overlay {
             position: absolute;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
+            bottom: 50%;
+            left: 0;
+            /* right: 20px; */
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             padding: 15px 20px;
@@ -982,6 +983,7 @@
             transform-origin: left center;
             opacity: 0;
             transition: transform 0.6s ease-out 0.8s, opacity 0.3s ease-out 0.8s;
+            transform: rotate(90deg);
         }
 
         .project-title-overlay {
@@ -994,10 +996,13 @@
         }
 
         .project-location-overlay {
-            font-size: 13px;
-            color: #666;
+            font-size: 32px;
             margin-bottom: 2px;
             font-weight: 500;
+            text-transform: uppercase;
+            font-size: 32px;
+            margin-bottom: 2px;
+
         }
 
         .project-date-overlay {
