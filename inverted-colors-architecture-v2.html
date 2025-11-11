@@ -496,7 +496,7 @@
         .services-grid {
             display: flex;
             flex-direction: column;
-            gap: 80px;
+            gap: 7px;
             width: 100%;
             max-width: none;
         }
@@ -514,13 +514,13 @@
         .services-row-bottom {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 2px;
             width: 100%;
         }
 
         .service-card {
             background: rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            /* border: 1px solid rgba(0, 0, 0, 0.08); */
             /* border-radius: 12px; */
             padding: 80px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -602,6 +602,75 @@
             background: rgba(255, 255, 255, 0.9);
             color: rgb(0, 0, 0);
             border: 2px solid rgb(255, 255, 255);
+        }
+
+        /* Bottom Row Service Cards with Project Images */
+        .research-card {
+            background-image: url('https://lamoureux-ricciotti.com/wp-content/uploads/2015/02/lamoureux_ricciotti_siegeiter5.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .lifecycle-card {
+            background-image: url('https://lamoureux-ricciotti.com/wp-content/uploads/2015/07/lamoureux-ricciotti-pont-de-la-r%C3%A9publique-Lisa-Ricciotti-11.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .bim-card {
+            background-image: url('https://lamoureux-ricciotti.com/wp-content/themes/lr/images/pont_de_la_republique-lamoureux-ricciotti-homepage_couleur.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .research-card::before,
+        .lifecycle-card::before,
+        .bim-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .research-card>*,
+        .lifecycle-card>*,
+        .bim-card>* {
+            position: relative;
+            z-index: 2;
+        }
+
+        .research-card .service-title,
+        .lifecycle-card .service-title,
+        .bim-card .service-title {
+            font-weight: 600;
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 32px;
+            background: white;
+            color: black;
+            padding: 7px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0;
+        }
+
+        .structure-card .service-title,
+        .envelope-card .service-title {
+            color: rgb(255, 255, 255);
+            font-weight: 600;
+            text-transform: capitalize;
+            text-align: center;
         }
 
         /* Vertical Title Magazine Effect */
@@ -2147,12 +2216,12 @@
                 <!-- Bottom Row - 3 Boxes -->
                 <div class="services-row-bottom">
                     <!-- Recherche et Développement -->
-                    <div class="service-card fade-in">
+                    <div class="service-card research-card fade-in">
                         <!-- <div class="service-icon">
                             <img src="assets/img/drawing.svg" alt="Recherche et Développement"
                                 class="research-svg-icon">
                         </div> -->
-                        <!-- <h3 class="service-title">Recherche et Développement</h3> -->
+                        <h3 class="service-title">Recherche et Développement</h3>
                         <!-- <p class="service-description">
                             Innovation continue pour repousser les limites de l'ingénierie et explorer
                             de nouvelles solutions constructives.
@@ -2161,12 +2230,12 @@
                     </div>
 
                     <!-- Analyse du cycle de vie -->
-                    <div class="service-card fade-in">
+                    <div class="service-card lifecycle-card fade-in">
                         <!-- <div class="service-icon">
                             <img src="assets/img/asset-management.svg" alt="Analyse du cycle de vie"
                                 class="lifecycle-svg-icon">
                         </div> -->
-                        <!-- <h3 class="service-title">Analyse du cycle de vie</h3> -->
+                        <h3 class="service-title">Analyse du cycle de vie</h3>
                         <!-- <p class="service-description">
                             Évaluation environnementale complète de nos projets pour minimiser leur
                             impact écologique sur toute leur durée de vie.
@@ -2175,12 +2244,12 @@
                     </div>
 
                     <!-- BIM -->
-                    <div class="service-card fade-in">
+                    <div class="service-card bim-card fade-in">
                         <!-- <div class="service-icon">
                             <img src="assets/img/bim.svg" alt="BIM - Building Information Modeling"
                                 class="bim-svg-icon">
                         </div> -->
-                        <!-- <h3 class="service-title">BIM</h3> -->
+                        <h3 class="service-title">BIM</h3>
                         <!-- <p class="service-description">
                             Modélisation numérique avancée pour une collaboration optimale entre tous
                             les acteurs du projet.
