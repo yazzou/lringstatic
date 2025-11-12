@@ -973,7 +973,7 @@
         /* Project info overlay inside frame */
         .project-info-overlay {
             position: absolute;
-            top: 20px;
+            top: 24px;
             left: 20px;
             padding: 15px 20px;
             z-index: 4;
@@ -986,16 +986,16 @@
               /* NOUVEAU label - moved to direct HTML element for better z-index control */
         .nouveau-label {
             position: absolute;
-            top: 20px;
+            top: 0;
             right: 20px;
             background: rgb(255, 255, 255);
             color: rgb(0, 0, 0);
             font-family: 'Anton', sans-serif;
-            font-size: 14px;
+            font-size: 22px;
             font-weight: 600;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            padding: 10px 20px;
+            padding: 5px 20px;
             z-index: 25;
             white-space: nowrap;
             opacity: 0;
@@ -1003,6 +1003,11 @@
         }
 
         .nouveau-label.visible {
+            opacity: 1;
+        }
+
+        /* Make NOUVEAU labels visible when their parent cards are visible */
+        .featured-project-card.animate-frame .nouveau-label {
             opacity: 1;
         }
 
@@ -2346,10 +2351,10 @@
             <div class="featured-projects-grid">
                 <!-- Projet 1 -->
                 <div class="featured-project-card">
-                    <div class="nouveau-label fade-in">NOUVEAU</div>
                     <div class="project-frame">
                         <div class="frame-inner-border">
                             <div class="project-image-container">
+                                <div class="nouveau-label fade-in">NOUVEAU</div>
                                 <img src="https://lamoureux-ricciotti.com/wp-content/themes/lr/images/pont_de_la_republique-lamoureux-ricciotti-homepage_couleur.jpg"
                                     alt="Bibliothèque Humaniste" class="project-image">
                                 <div class="project-info-overlay">
@@ -2364,10 +2369,10 @@
 
                 <!-- Projet 2 -->
                 <div class="featured-project-card">
-                    <div class="nouveau-label fade-in">NOUVEAU</div>
                     <div class="project-frame">
                         <div class="frame-inner-border">
                             <div class="project-image-container">
+                                <div class="nouveau-label fade-in">NOUVEAU</div>
                                 <img src="https://lamoureux-ricciotti.com/wp-content/themes/lr/images/pont_de_la_republique-lamoureux-ricciotti-homepage_couleur.jpg"
                                     alt="Centre Aquatique de l'Estuaire - Aquaparc" class="project-image">
                                 <div class="project-info-overlay">
@@ -2382,10 +2387,10 @@
 
                 <!-- Projet 3 -->
                 <div class="featured-project-card">
-                    <div class="nouveau-label fade-in">NOUVEAU</div>
                     <div class="project-frame">
                         <div class="frame-inner-border">
                             <div class="project-image-container">
+                                <div class="nouveau-label fade-in">NOUVEAU</div>
                                 <img src="https://lamoureux-ricciotti.com/wp-content/uploads/2015/07/lamoureux-ricciotti-pont-de-la-r%C3%A9publique-Lisa-Ricciotti-11.jpg"
                                     alt="Pont André Levy / Pont de la République" class="project-image">
                                 <div class="project-info-overlay">
@@ -2401,10 +2406,10 @@
 
                 <!-- Projet 4 -->
                 <div class="featured-project-card">
-                    <div class="nouveau-label fade-in">NOUVEAU</div>
                     <div class="project-frame">
                         <div class="frame-inner-border">
                             <div class="project-image-container">
+                                <div class="nouveau-label fade-in">NOUVEAU</div>
                                 <img src="https://lamoureux-ricciotti.com/wp-content/uploads/2015/02/lamoureux_ricciotti_siegeiter5.jpg"
                                     alt="Siège ITER" class="project-image">
                                 <div class="project-info-overlay">
