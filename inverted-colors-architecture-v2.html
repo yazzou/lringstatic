@@ -807,7 +807,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 8px;
-            margin-bottom: 60px;
+            margin-bottom: 0px;
         }
 
         .featured-project-card {
@@ -1013,14 +1013,14 @@
 
         /* ========== ICONIQUES PROJECTS SECTION ========== */
         .ICONIQUES-projects-section {
-            padding: 60px 60px 0px;
-            background: url(assets/img/service-bg.png) bottom right no-repeat;
+            /* padding: 60px 60px 0px;
+            background: url(assets/img/service-bg.png) bottom right no-repeat; */
             position: relative;
             overflow: hidden;
             padding-bottom: 0px;
         }
 
-        .ICONIQUES-projects-section::before {
+        /* .ICONIQUES-projects-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -1029,10 +1029,10 @@
             bottom: 0;
             background: rgba(255, 255, 255, 0.29);
             z-index: 1;
-        }
+        } */
 
         .ICONIQUES-projects-container {
-            max-width: 1400px;
+            max-width: 100%;
             margin: 0 auto;
             position: relative;
             z-index: 2;
@@ -1061,9 +1061,9 @@
 
         .ICONIQUES-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            margin-top: 60px;
+            grid-template-columns: 1fr;
+            gap: 2px;
+            margin-top: 5px;
         }
 
         .ICONIQUES-card {
@@ -1123,9 +1123,22 @@
         }
 
         .ICONIQUES-card .project-location {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 14px;
-            font-weight: 400;
+            background: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            font-size: 32px;
+            font-weight: 700;
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            min-width: 250px;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
         }
 
         /* Animated L-shapes effect */
@@ -1161,7 +1174,7 @@
         }
 
         /* Animation trigger when cards are visible */
-        .ICONIQUES-card.fade-in.visible::before {
+        /* .ICONIQUES-card.fade-in.visible::before {
             opacity: 1;
             height: 93%;
             width: 89%;
@@ -1171,7 +1184,7 @@
             opacity: 1;
             height: 100%;
             width: 89%;
-        }
+        } */
 
         /* ========== FOOTER ========== */
         footer {
@@ -1808,7 +1821,7 @@
 
             /* ICONIQUES Projects Mobile Styles */
             .ICONIQUES-projects-section {
-                padding: 80px 30px;
+                /* padding: 80px 30px; */
             }
 
             .ICONIQUES-projects-title {
@@ -2350,10 +2363,10 @@
     <!-- ICONIQUES Projects Section -->
     <section class="ICONIQUES-projects-section" id="ICONIQUES-projects">
         <div class="ICONIQUES-projects-container">
-            <div class="ICONIQUES-projects-header fade-in">
-                <!-- <h2 class="ICONIQUES-projects-title">Projets ICONIQUES</h2> -->
-                <p class="ICONIQUES-projects-subtitle">Réalisations marquantes de notre portfolio</p>
-            </div>
+            <!-- <div class="ICONIQUES-projects-header fade-in"> -->
+            <!-- <h2 class="ICONIQUES-projects-title">Projets ICONIQUES</h2> -->
+            <!-- <p class="ICONIQUES-projects-subtitle">Réalisations marquantes de notre portfolio</p> -->
+            <!-- </div> -->
 
             <div class="ICONIQUES-grid">
                 <div class="ICONIQUES-card fade-in">
