@@ -504,7 +504,7 @@
         .services-row-top {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 7px;
+            gap: 3px;
             width: 100%;
             margin: -60px 0 0 0;
             position: relative;
@@ -806,7 +806,7 @@
         .featured-projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
+            gap: 3px;
             margin-bottom: 0px;
         }
 
@@ -1021,19 +1021,30 @@
             text-transform: uppercase;
         }
 
+        /* Meta container for location and date */
+        .project-meta-overlay {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 8px;
+        }
+
         .project-location-overlay {
-            font-size: 1.125rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            line-height: 1;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .project-date-overlay {
+            font-size: 1.25rem;
             font-weight: 400;
             letter-spacing: -0.025em;
             line-height: 1;
             color: white;
-
-        }
-
-        .project-date-overlay {
-            font-size: 12px;
-            color: #888;
-            font-weight: 400;
+            text-transform: uppercase;
         }
 
         /* ========== ICONIQUES PROJECTS SECTION ========== */
@@ -2359,8 +2370,10 @@
                                     alt="Bibliothèque Humaniste" class="project-image">
                                 <div class="project-info-overlay">
                                     <h3 class="project-title-overlay">Bibliothèque Humaniste</h3>
-                                    <p class="project-location-overlay">Sélestat (67)</p>
-                                    <p class="project-date-overlay">Ouverture Janvier 2018</p>
+                                    <div class="project-meta-overlay">
+                                        <p class="project-location-overlay">Sélestat (67)</p>
+                                        <p class="project-date-overlay">Ouverture Janvier 2018</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2377,8 +2390,10 @@
                                     alt="Centre Aquatique de l'Estuaire - Aquaparc" class="project-image">
                                 <div class="project-info-overlay">
                                     <h3 class="project-title-overlay">Centre Aquatique de l'Estuaire - Aquaparc</h3>
-                                    <p class="project-location-overlay">Saint-Nazaire (44)</p>
-                                    <p class="project-date-overlay">Livré Mars 2018</p>
+                                    <div class="project-meta-overlay">
+                                        <p class="project-location-overlay">Saint-Nazaire (44)</p>
+                                        <p class="project-date-overlay">Livré Mars 2018</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2395,9 +2410,10 @@
                                     alt="Pont André Levy / Pont de la République" class="project-image">
                                 <div class="project-info-overlay">
                                     <h3 class="project-title-overlay">Pont André Levy / Pont de la République</h3>
-                                    <p class="project-location-overlay">Montpellier (34)</p>
-                                    <p class="project-date-overlay">Études 2009 - Chantier janvier 2013 - Livraison 2014
-                                    </p>
+                                    <div class="project-meta-overlay">
+                                        <p class="project-location-overlay">Montpellier (34)</p>
+                                        <p class="project-date-overlay">Études 2009 - Chantier janvier 2013 - Livraison 2014</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2414,8 +2430,10 @@
                                     alt="Siège ITER" class="project-image">
                                 <div class="project-info-overlay">
                                     <h3 class="project-title-overlay">Siège ITER</h3>
-                                    <p class="project-location-overlay">Cadarache (13)</p>
-                                    <p class="project-date-overlay">Octobre 2012</p>
+                                    <div class="project-meta-overlay">
+                                        <p class="project-location-overlay">Cadarache (13)</p>
+                                        <p class="project-date-overlay">Octobre 2012</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
