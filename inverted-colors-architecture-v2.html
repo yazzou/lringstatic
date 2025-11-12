@@ -750,9 +750,9 @@
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border-color: rgba(0, 0, 0, 0.2);
+            /* transform: translateY(-5px); */
+            /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); */
+            /* border-color: rgba(0, 0, 0, 0.2); */
         }
 
         /* ========== FEATURED PROJECTS SECTION ========== */
@@ -815,7 +815,7 @@
         }
 
         .featured-project-card:hover {
-            transform: translateY(-8px);
+            /* transform: translateY(-8px); */
         }
 
         /* Double-layered geometric frame */
@@ -917,11 +917,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            filter: grayscale(100%);
+            transition: filter 0.6s ease;
         }
 
         .featured-project-card:hover .project-image {
-            transform: scale(1.05);
+            filter: grayscale(0%);
         }
 
         /* Project numbering system */
@@ -972,36 +973,51 @@
         /* Project info overlay inside frame */
         .project-info-overlay {
             position: absolute;
-            bottom: 50%;
-            left: 0;
-            /* right: 20px; */
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            top: 20px;
+            left: 20px;
             padding: 15px 20px;
             z-index: 4;
             transform: scaleX(0);
             transform-origin: left center;
             opacity: 0;
             transition: transform 0.6s ease-out 0.8s, opacity 0.3s ease-out 0.8s;
-            transform: rotate(90deg);
+        }
+
+              /* NOUVEAU label - moved to direct HTML element for better z-index control */
+        .nouveau-label {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            font-family: 'Anton', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            z-index: 25;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease-out 0.8s;
         }
 
         .project-title-overlay {
-            font-size: 16px;
-            font-weight: 600;
-            color: #000;
-            margin-bottom: 4px;
-            letter-spacing: -0.3px;
-            line-height: 1.2;
+            font-size: 3.5rem;
+            font-weight: 400;
+            letter-spacing: -0.025em;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            color: white;
+            text-transform: uppercase;
         }
 
         .project-location-overlay {
-            font-size: 32px;
-            margin-bottom: 2px;
-            font-weight: 500;
-            text-transform: uppercase;
-            font-size: 32px;
-            margin-bottom: 2px;
+            font-size: 1.125rem;
+            font-weight: 400;
+            letter-spacing: -0.025em;
+            line-height: 1;
+            color: white;
 
         }
 
@@ -1063,55 +1079,58 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 2px;
-            margin-top: 5px;
+            margin-top: 18px;
         }
 
         .ICONIQUES-card {
-            height: 500px;
+            height: 100vh;
             position: relative;
             overflow: hidden;
-            border: 2px solid #000;
             cursor: pointer;
             transition: transform 0.5s ease, box-shadow 0.5s ease;
             background: #ffffff;
         }
 
         .ICONIQUES-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            /* transform: translateY(-8px); */
+            /* box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); */
         }
 
         .ICONIQUES-card .project-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
         }
 
-        .ICONIQUES-card:hover .project-image {
-            transform: scale(1.05);
-        }
+        /* .ICONIQUES-card:hover .project-image {
+            filter: grayscale(0%);
+        } */
 
         .ICONIQUES-card .project-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
+            top: 50%;
+            left: 2%;
+            transform: translateY(-50%);
+            /* width: 250px; */
+            /* height: 250px; */
+            background: rgb(0 0 0 / 20%);
+            border-radius: 0;
             opacity: 0;
-            transform: translateY(100%);
-            transition: opacity 0.3s ease-out 1.5s, transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1) 1.5s;
+            transition: opacity 0.3s ease-out 1.5s;
+            width: 100%;
+            height: 100%;
+            border-left: 1px solid white;
         }
 
         /* Animation trigger when cards are visible */
         .ICONIQUES-card.fade-in.visible .project-overlay {
             opacity: 1;
-            transform: translateY(0);
+        }
+
+        .ICONIQUES-card.fade-in.visible .project-image {
+            filter: grayscale(0%);
         }
 
         .ICONIQUES-card .project-title {
@@ -1123,22 +1142,55 @@
         }
 
         .ICONIQUES-card .project-location {
-            background: rgb(255, 255, 255);
-            color: rgb(0, 0, 0);
-            font-size: 32px;
-            font-weight: 700;
-            padding: 20px;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            min-width: 250px;
-            min-height: 250px;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            height: 100%;
             display: flex;
             align-items: center;
-            justify-content: center;
             z-index: 10;
+        }
+
+        .text-wrapper {
+            display: flex;
+            align-items: center;
+            margin-left: -2.5rem;
+        }
+
+        .vertical-label {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            background: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            padding: 1.5rem 0.75rem;
+            font-family: 'Anton', sans-serif;
+            font-size: 1.25rem;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        .location-text {
+            display: flex;
+            flex-direction: column;
+            padding-left: 1.5rem;
+            color: rgb(255, 255, 255);
+            font-family: 'Anton', sans-serif;
+        }
+
+        .ICONIQUES-card .project-city {
+            font-size: 3.5rem;
+            font-weight: 400;
+            letter-spacing: -0.025em;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .ICONIQUES-card .project-country {
+            font-size: 3.5rem;
+            font-weight: 400;
+            letter-spacing: -0.025em;
+            line-height: 1;
         }
 
         /* Animated L-shapes effect */
@@ -2290,13 +2342,14 @@
             <div class="featured-projects-grid">
                 <!-- Projet 1 -->
                 <div class="featured-project-card">
+                    <div class="nouveau-label fade-in">NOUVEAU</div>
                     <div class="project-frame">
                         <div class="frame-inner-border">
                             <div class="project-image-container">
                                 <img src="https://lamoureux-ricciotti.com/wp-content/themes/lr/images/pont_de_la_republique-lamoureux-ricciotti-homepage_couleur.jpg"
                                     alt="Bibliothèque Humaniste" class="project-image">
                                 <div class="project-info-overlay">
-                                    <!-- <h3 class="project-title-overlay">Bibliothèque Humaniste</h3> -->
+                                    <h3 class="project-title-overlay">Bibliothèque Humaniste</h3>
                                     <p class="project-location-overlay">Sélestat (67)</p>
                                     <p class="project-date-overlay">Ouverture Janvier 2018</p>
                                 </div>
@@ -2313,7 +2366,7 @@
                                 <img src="https://lamoureux-ricciotti.com/wp-content/themes/lr/images/pont_de_la_republique-lamoureux-ricciotti-homepage_couleur.jpg"
                                     alt="Centre Aquatique de l'Estuaire - Aquaparc" class="project-image">
                                 <div class="project-info-overlay">
-                                    <!-- <h3 class="project-title-overlay">Centre Aquatique de l'Estuaire - Aquaparc</h3> -->
+                                    <h3 class="project-title-overlay">Centre Aquatique de l'Estuaire - Aquaparc</h3>
                                     <p class="project-location-overlay">Saint-Nazaire (44)</p>
                                     <p class="project-date-overlay">Livré Mars 2018</p>
                                 </div>
@@ -2330,7 +2383,7 @@
                                 <img src="https://lamoureux-ricciotti.com/wp-content/uploads/2015/07/lamoureux-ricciotti-pont-de-la-r%C3%A9publique-Lisa-Ricciotti-11.jpg"
                                     alt="Pont André Levy / Pont de la République" class="project-image">
                                 <div class="project-info-overlay">
-                                    <!-- <h3 class="project-title-overlay">Pont André Levy / Pont de la République</h3> -->
+                                    <h3 class="project-title-overlay">Pont André Levy / Pont de la République</h3>
                                     <p class="project-location-overlay">Montpellier (34)</p>
                                     <p class="project-date-overlay">Études 2009 - Chantier janvier 2013 - Livraison 2014
                                     </p>
@@ -2348,7 +2401,7 @@
                                 <img src="https://lamoureux-ricciotti.com/wp-content/uploads/2015/02/lamoureux_ricciotti_siegeiter5.jpg"
                                     alt="Siège ITER" class="project-image">
                                 <div class="project-info-overlay">
-                                    <!-- <h3 class="project-title-overlay">Siège ITER</h3> -->
+                                    <h3 class="project-title-overlay">Siège ITER</h3>
                                     <p class="project-location-overlay">Cadarache (13)</p>
                                     <p class="project-date-overlay">Octobre 2012</p>
                                 </div>
@@ -2373,7 +2426,15 @@
                     <img src="assets/img/iconic_1.png" alt="Projet Iconique" class="project-image">
                     <div class="project-overlay">
                         <!-- <h3 class="project-title">Stade JEAN BOUIN</h3> -->
-                        <p class="project-location">Lille, France</p>
+                        <div class="project-location">
+                            <div class="text-wrapper">
+                                <div class="vertical-label">ICONIQUE</div>
+                                <div class="location-text">
+                                    <h1 class="project-city">LILLE</h1>
+                                    <h2 class="project-country">FRANCE</h2>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -2381,7 +2442,15 @@
                     <img src="assets/img/iconic_2.png" alt="Projet Iconique" class="project-image">
                     <div class="project-overlay">
                         <!-- <h3 class="project-title">Pont de la République</h3> -->
-                        <p class="project-location">Montpellier, France</p>
+                        <div class="project-location">
+                            <div class="text-wrapper">
+                                <div class="vertical-label">ICONIQUE</div>
+                                <div class="location-text">
+                                    <h1 class="project-city">MONTPELLIER</h1>
+                                    <h2 class="project-country">FRANCE</h2>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -2389,7 +2458,15 @@
                     <img src="assets/img/iconic_3.png" alt="Projet Iconique" class="project-image">
                     <div class="project-overlay">
                         <!-- <h3 class="project-title">Gare TGV Montpellier Sud de France</h3> -->
-                        <p class="project-location">Montpellier, France</p>
+                        <div class="project-location">
+                            <div class="text-wrapper">
+                                <div class="vertical-label">ICONIQUE</div>
+                                <div class="location-text">
+                                    <h1 class="project-city">MONTPELLIER</h1>
+                                    <h2 class="project-country">FRANCE</h2>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -2397,7 +2474,15 @@
                     <img src="assets/img/iconic_4.png" alt="Projet Iconique" class="project-image">
                     <div class="project-overlay">
                         <!-- <h3 class="project-title">Centre Commercial Lumière</h3> -->
-                        <p class="project-location">Lyon, France</p>
+                        <div class="project-location">
+                            <div class="text-wrapper">
+                                <div class="vertical-label">ICONIQUE</div>
+                                <div class="location-text">
+                                    <h1 class="project-city">LYON</h1>
+                                    <h2 class="project-country">FRANCE</h2>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
