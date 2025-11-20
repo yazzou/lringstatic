@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATELIER - Architecture & Ingénierie</title>
+    <style>
+        /* ========== VARIABLES & RESET ========== */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #111111;
+            --accent-color: #000000;
+            --secondary-text: #666666;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --hero-overlay: rgba(0, 0, 0, 0.3);
+            --transition-speed: 0.6s;
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --spacing-unit: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ========== UTILITIES ========== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--secondary-text);
+            margin-bottom: 60px;
+            display: block;
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+            mix-blend-mode: difference;
+            color: white;
+        }
+
+        .header.scrolled {
+            padding: 20px 60px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            mix-blend-mode: normal;
+            color: black;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            filter: brightness(0) invert(1);
+            /* White logo initially */
+            transition: filter 0.4s ease;
+        }
+
+        .header.scrolled .logo img {
+            filter: brightness(0);
+            /* Black logo on scroll */
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-social-icons {
+            display: flex;
+            gap: 15px;
+            margin-left: 20px;
+            padding-left: 20px;
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .header.scrolled .nav-social-icons {
+            border-left: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+            animation: slowZoom 20s infinite alternate;
+        }
+
+        @keyframes slowZoom {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.1);
+            }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            mix-blend-mode: difference;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-label {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeUp 1s forwards 0.3s;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            line-height: 0.9;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s forwards 0.5s;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeUp 1s forwards 0.7s;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeUp 1s forwards 0.9s;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========== SERVICES / COMPETENCE ========== */
+        .services {
+            padding: var(--spacing-unit) 0;
+            position: relative;
+            background-color: #fff;
+        }
+
+        .filigree-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assets/img/drawing.svg');
+            background-repeat: no-repeat;
+            background-position: right center;
+            background-size: 60%;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+            background: #f0f0f0;
+            border: 1px solid #f0f0f0;
+        }
+
+        .services-row-bottom {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+
+        .service-card {
+            position: relative;
+            height: 400px;
+            background: white;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .service-card.prominent {
+            height: 500px;
+        }
+
+        .service-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.8s ease;
+            filter: grayscale(100%);
+        }
+
+        .service-card:hover .service-bg {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+
+        .service-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            z-index: 2;
+        }
+
+        .service-title {
+            font-size: 2rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            max-width: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            transition: max-width 0.5s ease;
+        }
+
+        .service-card:hover .service-desc {
+            max-width: 100%;
+        }
+
+        /* ========== ICONIC PROJECTS (Full Width) ========== */
+        .iconic-projects {
+            background: #000;
+        }
+
+        .iconic-item {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .iconic-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.6;
+            transition: opacity 0.5s ease, transform 10s linear;
+        }
+
+        .iconic-item:hover .iconic-bg {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        .iconic-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .iconic-item.in-view .iconic-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .iconic-label {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            background: white;
+            color: black;
+            padding: 1.5rem 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            position: absolute;
+            left: -80px;
+            top: 50%;
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .iconic-title {
+            font-size: 5vw;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .iconic-location {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        /* ========== FEATURED PROJECTS (Masonry/Grid) ========== */
+        .featured-projects {
+            padding: var(--spacing-unit) 0;
+            background: #fff;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+        }
+
+        .project-card {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .project-card:nth-child(even) {
+            margin-top: 100px;
+        }
+
+        .project-img-wrapper {
+            width: 100%;
+            padding-bottom: 66%;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .project-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+            filter: grayscale(100%);
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.03);
+            filter: grayscale(0%);
+        }
+
+        .nouveau-label {
+            position: absolute;
+            top: 0;
+            right: 20px;
+            background: white;
+            color: black;
+            padding: 5px 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            z-index: 10;
+        }
+
+        .project-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .project-name {
+            font-size: 1.5rem;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .project-meta {
+            text-align: right;
+        }
+
+        .project-loc {
+            font-size: 0.9rem;
+            color: #000;
+            font-weight: 600;
+            display: block;
+        }
+
+        .project-date {
+            font-size: 0.8rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: #000;
+            color: #fff;
+            padding: 80px 60px;
+            border-top: 2px solid white;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 80px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo img {
+            height: 100px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-nav {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .footer-nav h4 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            opacity: 0.8;
+        }
+
+        .footer-nav ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-nav a {
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        .footer-nav a:hover {
+            opacity: 1;
+            font-weight: 700;
+        }
+
+        .footer-contact h4 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            opacity: 0.4;
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            opacity: 0.6;
+            font-size: 0.8rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-row-bottom {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .project-card:nth-child(even) {
+                margin-top: 0;
+            }
+
+            .iconic-title {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="assets/img/logo_v2-transparent.svg" alt="ATELIER">
+        </a>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#bureau" class="nav-link">Bureau d'études</a></li>
+                <li><a href="projects-page.html" class="nav-link">Projets</a></li>
+                <li><a href="#presse" class="nav-link">Presse</a></li>
+                <li><a href="#book" class="nav-link">Notre book</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li class="nav-social-icons">
+                    <a href="https://facebook.com" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.405a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z" />
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="accueil">
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('assets/img/mucem-main.jpg');"></div>
+            <div class="slide" style="background-image: url('assets/img/pont-republique-main.jpg');"></div>
+            <div class="slide" style="background-image: url('assets/img/tour-marseillaise-main.jpg');"></div>
+            <div class="slide" style="background-image: url('assets/img/stade-jean-bouin-main.jpg');"></div>
+            <div class="slide" style="background-image: url('assets/img/centre-aquatique-main.jpg');"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-label">Ingénierie d'Excellence</p>
+            <!-- <h1 class="hero-title">LAMOUREUX & RICCIOTTI</h1> -->
+            <p class="hero-description">
+                Une sélection de projets emblématiques témoignant de notre savoir-faire
+                en architecture et ingénierie structurelle innovante
+            </p>
+            <div class="hero-meta">
+                <span>depuis 1992</span>
+                <span>France</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="bureau" class="services">
+        <div class="filigree-bg"></div>
+        <div class="container">
+            <div class="services-grid">
+                <!-- Structure -->
+                <div class="service-card prominent">
+                    <div class="service-bg" style="background-image: url('assets/img/cineum-main.jpg');"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">Structure</h3>
+                        <p class="service-desc">Conception et calcul de structures innovantes pour des projets
+                            d'exception.</p>
+                    </div>
+                </div>
+                <!-- Enveloppe -->
+                <div class="service-card prominent">
+                    <div class="service-bg" style="background-image: url('assets/img/parking-silo-main.jpg');"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">Enveloppe</h3>
+                        <p class="service-desc">Maîtrise des enveloppes architecturales alliant esthétique et
+                            performance.</p>
+                    </div>
+                </div>
+
+                <div class="services-row-bottom">
+                    <!-- Recherche -->
+                    <div class="service-card">
+                        <div class="service-bg"
+                            style="background-image: url('https://lamoureux-ricciotti.com/wp-content/uploads/2015/02/lamoureux_ricciotti_siegeiter5.jpg');">
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">Recherche et Développement</h3>
+                            <p class="service-desc">Innovation continue pour repousser les limites de l'ingénierie.</p>
+                        </div>
+                    </div>
+                    <!-- Cycle de vie -->
+                    <div class="service-card">
+                        <div class="service-bg"
+                            style="background-image: url('https://lamoureux-ricciotti.com/wp-content/uploads/2015/07/lamoureux-ricciotti-pont-de-la-r%C3%A9publique-Lisa-Ricciotti-11.jpg');">
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">Analyse du cycle de vie</h3>
+                            <p class="service-desc">Évaluation environnementale complète de nos projets.</p>
+                        </div>
+                    </div>
+                    <!-- BIM -->
+                    <div class="service-card">
+                        <div class="service-bg"
+                            style="background-image: url('https://lamoureux-ricciotti.com/wp-content/themes/lr/images/pont_de_la_republique-lamoureux-ricciotti-homepage_couleur.jpg');">
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">BIM</h3>
+                            <p class="service-desc">Modélisation numérique avancée pour une collaboration optimale.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PROJECTS -->
+    <section id="projets" class="featured-projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Projets à la Une</h2>
+            </div>
+            <div class="project-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <div class="nouveau-label">NOUVEAU</div>
+                        <img src="https://lamoureux-ricciotti.com/wp-content/themes/lr/images/pont_de_la_republique-lamoureux-ricciotti-homepage_couleur.jpg"
+                            alt="Bibliothèque Humaniste" class="project-img">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-name">Bibliothèque Humaniste</h3>
+                        <div class="project-meta">
+                            <span class="project-loc">Sélestat (67)</span>
+                            <span class="project-date">Ouverture Janvier 2018</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <div class="nouveau-label">NOUVEAU</div>
+                        <img src="https://lamoureux-ricciotti.com/wp-content/themes/lr/images/pont_de_la_republique-lamoureux-ricciotti-homepage_couleur.jpg"
+                            alt="Centre Aquatique" class="project-img">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-name">Centre Aquatique de l'Estuaire</h3>
+                        <div class="project-meta">
+                            <span class="project-loc">Saint-Nazaire (44)</span>
+                            <span class="project-date">Livré Mars 2018</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <div class="nouveau-label">NOUVEAU</div>
+                        <img src="https://lamoureux-ricciotti.com/wp-content/uploads/2015/07/lamoureux-ricciotti-pont-de-la-r%C3%A9publique-Lisa-Ricciotti-11.jpg"
+                            alt="Pont André Levy" class="project-img">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-name">Pont André Levy</h3>
+                        <div class="project-meta">
+                            <span class="project-loc">Montpellier (34)</span>
+                            <span class="project-date">Livraison 2014</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <div class="nouveau-label">NOUVEAU</div>
+                        <img src="https://lamoureux-ricciotti.com/wp-content/uploads/2015/02/lamoureux_ricciotti_siegeiter5.jpg"
+                            alt="Siège ITER" class="project-img">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-name">Siège ITER</h3>
+                        <div class="project-meta">
+                            <span class="project-loc">Cadarache (13)</span>
+                            <span class="project-date">Octobre 2012</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ICONIC PROJECTS (Full Width) -->
+    <section id="iconic" class="iconic-projects">
+        <!-- Project 1 -->
+        <div class="iconic-item">
+            <div class="iconic-bg" style="background-image: url('assets/img/iconic_1.png');"></div>
+            <div class="iconic-content">
+                <div class="iconic-label">ICONIQUE</div>
+                <h2 class="iconic-title">LILLE</h2>
+                <p class="iconic-location">FRANCE</p>
+            </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="iconic-item">
+            <div class="iconic-bg" style="background-image: url('assets/img/iconic_2.png');"></div>
+            <div class="iconic-content">
+                <div class="iconic-label">ICONIQUE</div>
+                <h2 class="iconic-title">MONTPELLIER</h2>
+                <p class="iconic-location">FRANCE</p>
+            </div>
+        </div>
+        <!-- Project 3 -->
+        <div class="iconic-item">
+            <div class="iconic-bg" style="background-image: url('assets/img/iconic_3.png');"></div>
+            <div class="iconic-content">
+                <div class="iconic-label">ICONIQUE</div>
+                <h2 class="iconic-title">MONTPELLIER</h2>
+                <p class="iconic-location">FRANCE</p>
+            </div>
+        </div>
+        <!-- Project 4 -->
+        <div class="iconic-item">
+            <div class="iconic-bg" style="background-image: url('assets/img/iconic_4.png');"></div>
+            <div class="iconic-content">
+                <div class="iconic-label">ICONIQUE</div>
+                <h2 class="iconic-title">LYON</h2>
+                <p class="iconic-location">FRANCE</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="assets/img/logo_v2-transparent.svg" alt="LRING">
+                </div>
+            </div>
+
+            <div class="footer-nav">
+                <div class="footer-nav-column">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#bureau">Bureau d'études</a></li>
+                        <li><a href="#projets">Projets</a></li>
+                        <li><a href="#book">Book</a></li>
+                        <li><a href="#presse">Presse</a></li>
+                    </ul>
+                </div>
+                <div class="footer-nav-column">
+                    <h4>Compétences</h4>
+                    <ul>
+                        <li><a href="#structure">Structure</a></li>
+                        <li><a href="#enveloppe">Enveloppe</a></li>
+                        <li><a href="#rd">R&D</a></li>
+                        <li><a href="#bim">BIM</a></li>
+                    </ul>
+                </div>
+                <div class="footer-nav-column">
+                    <h4>Suivez-nous</h4>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p>contact@lring.fr</p>
+                <p>+33 (0)1 XX XX XX XX</p>
+                <p>Paris, France</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-legal">
+                <a href="#">Mentions Légales</a>
+                <a href="#">Conditions Générales</a>
+                <a href="#">Politique de Confidentialité</a>
+            </div>
+            <div class="footer-copyright">
+                © 2025 LRING - Tous droits réservés
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Hero Slider
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, 5000);
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.iconic-item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+
+</html>
