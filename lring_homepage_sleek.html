@@ -286,7 +286,7 @@
         .filigree-bg {
             position: absolute;
             top: 0;
-            left: 0;
+            left: 178px;
             width: 100%;
             height: 100%;
             background-image: url('assets/img/service-bg.png');
@@ -301,36 +301,37 @@
 
         .container {
             position: relative;
-            /* For watermark positioning */
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
+            z-index: 2;
+            /* Ensure container content sits above watermark */
         }
 
         .services-watermark {
             position: absolute;
             top: 0;
-            left: -80px;
-            /* Position in left margin */
+            left: -180px;
             height: 100%;
-            /* Match container/grid height */
+            width: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1;
+            z-index: 0;
             pointer-events: none;
         }
 
         .services-watermark-text {
             writing-mode: vertical-rl;
             transform: rotate(180deg);
-            font-size: clamp(4rem, 8vh, 8rem);
-            /* Increased to match À LA UNE prominence */
+            font-size: clamp(3rem, 5vh, 6rem);
+            /* Reduced size to prevent overlap */
             font-weight: 900;
             color: #000;
             opacity: 0.1;
             white-space: nowrap;
             margin: 0;
+            line-height: 1;
         }
 
         .services-grid {
