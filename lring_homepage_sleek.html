@@ -82,7 +82,8 @@
 
         /* ========== HEADER ========== */
         .header {
-            position: fixed;
+            position: absolute;
+            /* Changed from fixed to absolute */
             top: 0;
             left: 0;
             width: 100%;
@@ -92,40 +93,44 @@
             justify-content: space-between;
             align-items: center;
             transition: all 0.4s ease;
-            mix-blend-mode: difference;
             color: white;
+            /* Removed mix-blend-mode as requested */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .header.scrolled {
             padding: 20px 60px;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            mix-blend-mode: normal;
             color: black;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            text-shadow: none;
         }
 
         .logo img {
-            height: 60px;
+            height: 90px;
+            /* Increased from 60px */
             width: auto;
-            filter: brightness(0) invert(1);
-            /* White logo initially */
+            /* White logo initially with shadow */
+            filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
             transition: filter 0.4s ease;
         }
 
         .header.scrolled .logo img {
-            filter: brightness(0);
-            /* Black logo on scroll */
+            /* Black logo on scroll, no shadow */
+            filter: brightness(0) drop-shadow(none);
         }
 
         .nav-menu {
             display: flex;
-            gap: 40px;
+            gap: 25px;
+            /* Reduced from 40px */
             align-items: center;
         }
 
         .nav-link {
-            font-size: 0.9rem;
+            font-size: 1.1rem;
+            /* Increased from 0.9rem */
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -161,13 +166,16 @@
 
         /* ========== HERO SECTION ========== */
         .hero {
-            height: 100vh;
+            height: 65vh;
+            /* Not 100vh, but full width */
             width: 100%;
             position: relative;
             overflow: hidden;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-end;
+            /* Align content to bottom */
+            justify-content: flex-start;
+            /* Align content to left */
         }
 
         .hero-slider {
@@ -176,6 +184,7 @@
             left: 0;
             width: 100%;
             height: 100%;
+            z-index: 0;
         }
 
         .slide {
@@ -192,18 +201,10 @@
 
         .slide.active {
             opacity: 1;
-            animation: slowZoom 20s infinite alternate;
+            /* Removed slowZoom animation for simple background change */
         }
 
-        @keyframes slowZoom {
-            from {
-                transform: scale(1);
-            }
-
-            to {
-                transform: scale(1.1);
-            }
-        }
+        /* Removed @keyframes slowZoom */
 
         .hero-overlay {
             position: absolute;
@@ -211,66 +212,68 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.2);
+            /* Gradient overlay for readability */
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
             z-index: 1;
+            /* Overlay above bg */
+            pointer-events: none;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: white;
-            mix-blend-mode: difference;
+        /* Per-slide content */
+        .slide-content {
+            position: absolute;
+            bottom: 60px;
+            left: 60px;
+            z-index: 10;
+            /* Increased z-index to be safe */
+            color: #ffffff;
+            /* Pure white */
+            text-align: left;
             max-width: 800px;
-            padding: 0 20px;
-        }
-
-        .hero-label {
-            font-size: 0.8rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
             opacity: 0;
-            animation: fadeUp 1s forwards 0.3s;
+            transform: translateY(100px);
+            /* Increased start offset for more dramatic effect */
+            transition: all 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 0.5s;
+            /* Smooth ease-out, slightly delayed */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        .hero-title {
-            font-size: clamp(3rem, 8vw, 8rem);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            line-height: 0.9;
-            margin-bottom: 30px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s forwards 0.5s;
+        .slide.active .slide-content {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .hero-description {
-            font-size: 1.2rem;
-            font-weight: 300;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            opacity: 0;
-            animation: fadeUp 1s forwards 0.7s;
-        }
-
-        .hero-meta {
+        .slide-meta {
             display: flex;
-            justify-content: center;
-            gap: 30px;
+            gap: 20px;
             font-size: 0.9rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            opacity: 0;
-            animation: fadeUp 1s forwards 0.9s;
+            margin-bottom: 15px;
+            opacity: 1;
+            /* Removed opacity 0.9 */
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .slide-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1;
+            margin-bottom: 0;
+            color: #ffffff;
+            /* Pure white */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            /* Sharper shadow */
+        }
+
+        /* Static Hero Content (if needed, but per-slide is better for "titles") */
+        .hero-static-content {
+            display: none;
+            /* Hiding static content in favor of dynamic slide content */
         }
 
         /* ========== SERVICES / COMPETENCE ========== */
@@ -286,13 +289,48 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('assets/img/drawing.svg');
+            background-image: url('assets/img/service-bg.png');
             background-repeat: no-repeat;
-            background-position: right center;
-            background-size: 60%;
-            opacity: 0.03;
+            background-position: center;
+            background-size: cover;
+            opacity: 1;
             pointer-events: none;
             z-index: 0;
+            filter: grayscale(100%);
+        }
+
+        .container {
+            position: relative;
+            /* For watermark positioning */
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .services-watermark {
+            position: absolute;
+            top: 0;
+            left: -80px;
+            /* Position in left margin */
+            height: 100%;
+            /* Match container/grid height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .services-watermark-text {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-size: clamp(4rem, 8vh, 8rem);
+            /* Increased to match À LA UNE prominence */
+            font-weight: 900;
+            color: #000;
+            opacity: 0.1;
+            white-space: nowrap;
+            margin: 0;
         }
 
         .services-grid {
@@ -448,14 +486,62 @@
 
         /* ========== FEATURED PROJECTS (Masonry/Grid) ========== */
         .featured-projects {
-            padding: var(--spacing-unit) 0;
+            padding: var(--spacing-unit) 20px;
+            /* Reduced side padding */
             background: #fff;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-projects::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assets/img/sketch-building-that-is-being-constructed-with-line-scaffolding_976492-23564.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            opacity: 0.08;
+            /* Adjusted for JPG watermark */
+            pointer-events: none;
+            z-index: 0;
+            mix-blend-mode: multiply;
+            /* Better blending for white background images */
+        }
+
+        .featured-projects .section-header {
+            position: absolute;
+            top: 50px;
+            left: calc(50% + 10px);
+            /* Align with start of second column (50% + half gap) */
+            right: auto;
+            width: auto;
+            text-align: left;
+            z-index: 1;
+            padding: 0;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .featured-projects .section-title {
+            font-size: clamp(4rem, 6vw, 8rem);
+            opacity: 0.1;
+            font-weight: 900;
+            color: #000;
+            white-space: nowrap;
+            margin: 0;
         }
 
         .project-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 60px;
+            gap: 20px;
+            /* Reduced gap for bigger images */
+            width: 100%;
         }
 
         .project-card {
@@ -464,7 +550,8 @@
         }
 
         .project-card:nth-child(even) {
-            margin-top: 100px;
+            margin-top: 150px;
+            /* Increased offset for more dramatic masonry */
         }
 
         .project-img-wrapper {
@@ -695,23 +782,55 @@
     <!-- HERO -->
     <section class="hero" id="accueil">
         <div class="hero-slider">
-            <div class="slide active" style="background-image: url('assets/img/mucem-main.jpg');"></div>
-            <div class="slide" style="background-image: url('assets/img/pont-republique-main.jpg');"></div>
-            <div class="slide" style="background-image: url('assets/img/tour-marseillaise-main.jpg');"></div>
-            <div class="slide" style="background-image: url('assets/img/stade-jean-bouin-main.jpg');"></div>
-            <div class="slide" style="background-image: url('assets/img/centre-aquatique-main.jpg');"></div>
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <p class="hero-label">Ingénierie d'Excellence</p>
-            <!-- <h1 class="hero-title">LAMOUREUX & RICCIOTTI</h1> -->
-            <p class="hero-description">
-                Une sélection de projets emblématiques témoignant de notre savoir-faire
-                en architecture et ingénierie structurelle innovante
-            </p>
-            <div class="hero-meta">
-                <span>depuis 1992</span>
-                <span>France</span>
+            <div class="slide active" style="background-image: url('assets/img/mucem-main.jpg');">
+                <div class="hero-overlay"></div>
+                <div class="slide-content">
+                    <div class="slide-meta">
+                        <span>2013</span>
+                        <span>Marseille</span>
+                    </div>
+                    <h2 class="slide-title">LE MUCEM</h2>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('assets/img/pont-republique-main.jpg');">
+                <div class="hero-overlay"></div>
+                <div class="slide-content">
+                    <div class="slide-meta">
+                        <span>2014</span>
+                        <span>Montpellier</span>
+                    </div>
+                    <h2 class="slide-title">PONT DE LA RÉPUBLIQUE</h2>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('assets/img/tour-marseillaise-main.jpg');">
+                <div class="hero-overlay"></div>
+                <div class="slide-content">
+                    <div class="slide-meta">
+                        <span>2021</span>
+                        <span>Marseille</span>
+                    </div>
+                    <h2 class="slide-title">TOUR LA MARSEILLAISE</h2>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('assets/img/stade-jean-bouin-main.jpg');">
+                <div class="hero-overlay"></div>
+                <div class="slide-content">
+                    <div class="slide-meta">
+                        <span>2013</span>
+                        <span>Paris</span>
+                    </div>
+                    <h2 class="slide-title">STADE JEAN BOUIN</h2>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('assets/img/centre-aquatique-main.jpg');">
+                <div class="hero-overlay"></div>
+                <div class="slide-content">
+                    <div class="slide-meta">
+                        <span>2018</span>
+                        <span>Saint-Nazaire</span>
+                    </div>
+                    <h2 class="slide-title">CENTRE AQUATIQUE</h2>
+                </div>
             </div>
         </div>
     </section>
@@ -720,6 +839,9 @@
     <section id="bureau" class="services">
         <div class="filigree-bg"></div>
         <div class="container">
+            <div class="services-watermark">
+                <h2 class="services-watermark-text">COMPÉTENCES</h2>
+            </div>
             <div class="services-grid">
                 <!-- Structure -->
                 <div class="service-card prominent">
@@ -778,69 +900,68 @@
 
     <!-- FEATURED PROJECTS -->
     <section id="projets" class="featured-projects">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Projets à la Une</h2>
+        <!-- Removed .container to allow full width -->
+        <div class="section-header">
+            <h2 class="section-title">À LA UNE</h2>
+        </div>
+        <div class="project-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <div class="nouveau-label">NOUVEAU</div>
+                    <img src="https://lamoureux-ricciotti.com/wp-content/themes/lr/images/pont_de_la_republique-lamoureux-ricciotti-homepage_couleur.jpg"
+                        alt="Bibliothèque Humaniste" class="project-img">
+                </div>
+                <div class="project-info">
+                    <h3 class="project-name">Bibliothèque Humaniste</h3>
+                    <div class="project-meta">
+                        <span class="project-loc">Sélestat (67)</span>
+                        <span class="project-date">Ouverture Janvier 2018</span>
+                    </div>
+                </div>
             </div>
-            <div class="project-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <div class="project-img-wrapper">
-                        <div class="nouveau-label">NOUVEAU</div>
-                        <img src="https://lamoureux-ricciotti.com/wp-content/themes/lr/images/pont_de_la_republique-lamoureux-ricciotti-homepage_couleur.jpg"
-                            alt="Bibliothèque Humaniste" class="project-img">
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-name">Bibliothèque Humaniste</h3>
-                        <div class="project-meta">
-                            <span class="project-loc">Sélestat (67)</span>
-                            <span class="project-date">Ouverture Janvier 2018</span>
-                        </div>
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <div class="nouveau-label">NOUVEAU</div>
+                    <img src="https://lamoureux-ricciotti.com/wp-content/themes/lr/images/pont_de_la_republique-lamoureux-ricciotti-homepage_couleur.jpg"
+                        alt="Centre Aquatique" class="project-img">
+                </div>
+                <div class="project-info">
+                    <h3 class="project-name">Centre Aquatique de l'Estuaire</h3>
+                    <div class="project-meta">
+                        <span class="project-loc">Saint-Nazaire (44)</span>
+                        <span class="project-date">Livré Mars 2018</span>
                     </div>
                 </div>
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-img-wrapper">
-                        <div class="nouveau-label">NOUVEAU</div>
-                        <img src="https://lamoureux-ricciotti.com/wp-content/themes/lr/images/pont_de_la_republique-lamoureux-ricciotti-homepage_couleur.jpg"
-                            alt="Centre Aquatique" class="project-img">
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-name">Centre Aquatique de l'Estuaire</h3>
-                        <div class="project-meta">
-                            <span class="project-loc">Saint-Nazaire (44)</span>
-                            <span class="project-date">Livré Mars 2018</span>
-                        </div>
+            </div>
+            <!-- Project 3 -->
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <div class="nouveau-label">NOUVEAU</div>
+                    <img src="https://lamoureux-ricciotti.com/wp-content/uploads/2015/07/lamoureux-ricciotti-pont-de-la-r%C3%A9publique-Lisa-Ricciotti-11.jpg"
+                        alt="Pont André Levy" class="project-img">
+                </div>
+                <div class="project-info">
+                    <h3 class="project-name">Pont André Levy</h3>
+                    <div class="project-meta">
+                        <span class="project-loc">Montpellier (34)</span>
+                        <span class="project-date">Livraison 2014</span>
                     </div>
                 </div>
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-img-wrapper">
-                        <div class="nouveau-label">NOUVEAU</div>
-                        <img src="https://lamoureux-ricciotti.com/wp-content/uploads/2015/07/lamoureux-ricciotti-pont-de-la-r%C3%A9publique-Lisa-Ricciotti-11.jpg"
-                            alt="Pont André Levy" class="project-img">
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-name">Pont André Levy</h3>
-                        <div class="project-meta">
-                            <span class="project-loc">Montpellier (34)</span>
-                            <span class="project-date">Livraison 2014</span>
-                        </div>
-                    </div>
+            </div>
+            <!-- Project 4 -->
+            <div class="project-card">
+                <div class="project-img-wrapper">
+                    <div class="nouveau-label">NOUVEAU</div>
+                    <img src="https://lamoureux-ricciotti.com/wp-content/uploads/2015/02/lamoureux_ricciotti_siegeiter5.jpg"
+                        alt="Siège ITER" class="project-img">
                 </div>
-                <!-- Project 4 -->
-                <div class="project-card">
-                    <div class="project-img-wrapper">
-                        <div class="nouveau-label">NOUVEAU</div>
-                        <img src="https://lamoureux-ricciotti.com/wp-content/uploads/2015/02/lamoureux_ricciotti_siegeiter5.jpg"
-                            alt="Siège ITER" class="project-img">
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-name">Siège ITER</h3>
-                        <div class="project-meta">
-                            <span class="project-loc">Cadarache (13)</span>
-                            <span class="project-date">Octobre 2012</span>
-                        </div>
+                <div class="project-info">
+                    <h3 class="project-name">Siège ITER</h3>
+                    <div class="project-meta">
+                        <span class="project-loc">Cadarache (13)</span>
+                        <span class="project-date">Octobre 2012</span>
                     </div>
                 </div>
             </div>
@@ -945,7 +1066,8 @@
     </footer>
 
     <script>
-        // Header Scroll Effect
+        // Header Scroll Effect (Disabled)
+        /*
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
             if (window.scrollY > 50) {
@@ -954,6 +1076,7 @@
                 header.classList.remove('scrolled');
             }
         });
+        */
 
         // Hero Slider
         const slides = document.querySelectorAll('.slide');
