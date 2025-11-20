@@ -324,7 +324,7 @@
         .services-watermark-text {
             writing-mode: vertical-rl;
             transform: rotate(180deg);
-            font-size: clamp(3rem, 5vh, 6rem);
+            font-size: clamp(3rem, 9vh, 6rem);
             /* Reduced size to prevent overlap */
             font-weight: 900;
             color: #000;
@@ -411,17 +411,60 @@
 
         /* ========== ICONIC PROJECTS (Full Width) ========== */
         .iconic-projects {
-            background: #000;
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+
+        .iconic-watermark {
+            position: absolute;
+            top: 40px;
+            left: 5%;
+            width: 90%;
+            display: flex;
+            align-items: center;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .iconic-watermark h2 {
+            font-size: clamp(3rem, 6vw, 8rem);
+            font-weight: 900;
+            color: #fff;
+            /* White for visibility on dark background? Wait, section bg is black? Let's check. */
+            /* The iconic items have images. The section background might not be visible. */
+            /* User said "luxury magazine style". Usually white on dark or black on light. */
+            /* The iconic items are full width images. */
+            /* If images are dark, white text. If images are light, black text. */
+            /* Let's assume white for now as "iconic" usually implies dramatic images. */
+            /* Actually, the previous watermarks were black with 0.1 opacity. */
+            /* Let's stick to the plan: color #000 opacity 0.1? */
+            /* But the iconic section has full width images. */
+            /* Let's check the images. They are iconic_1.png etc. */
+            /* If I use black opacity 0.1 on a dark image, it won't be visible. */
+            /* Let's use white opacity 0.2 for "luxury" on images. */
+            color: #fff;
+            opacity: 0.2;
+            white-space: nowrap;
+            margin: 0;
+            margin-right: 40px;
+        }
+
+        .watermark-line {
+            flex-grow: 1;
+            height: 2px;
+            background-color: #fff;
+            opacity: 0.2;
         }
 
         .iconic-item {
-            height: 100vh;
+            height: 70vh;
             width: 100%;
             position: relative;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .iconic-bg {
@@ -432,57 +475,78 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            opacity: 0.6;
-            transition: opacity 0.5s ease, transform 10s linear;
+            opacity: 0.8;
+            transition: opacity 0.5s ease, transform 0.8s ease;
+        }
+
+        .iconic-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.1) 100%);
+            z-index: 1;
+            pointer-events: none;
         }
 
         .iconic-item:hover .iconic-bg {
-            opacity: 0.8;
+            opacity: 1;
             transform: scale(1.05);
         }
 
-        .iconic-content {
-            position: relative;
+        .iconic-frame {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            bottom: 20px;
+            left: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            pointer-events: none;
             z-index: 2;
-            text-align: center;
-            color: white;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
         }
 
-        .iconic-item.in-view .iconic-content {
-            opacity: 1;
-            transform: translateY(0);
+        .iconic-text-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 40px;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            z-index: 3;
         }
 
         .iconic-label {
             writing-mode: vertical-rl;
             transform: rotate(180deg);
-            background: white;
-            color: black;
-            padding: 1.5rem 0.75rem;
+            background: #fff;
+            color: #000;
+            padding: 10px 5px;
             font-weight: 700;
-            letter-spacing: 0.1em;
-            position: absolute;
-            left: -80px;
-            top: 50%;
-            transform: translateY(-50%) rotate(180deg);
+            letter-spacing: 2px;
+            margin-right: 20px;
+            font-size: 0.9rem;
         }
 
-        .iconic-title {
-            font-size: 5vw;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-            margin-bottom: 10px;
-            line-height: 1;
+        .iconic-info {
+            display: flex;
+            flex-direction: column;
+            color: #fff;
         }
 
-        .iconic-location {
-            font-size: 1.2rem;
-            letter-spacing: 4px;
+        .iconic-city,
+        .iconic-country {
+            font-size: clamp(2rem, 4vw, 4rem);
+            /* Reduced size */
+            font-weight: 700;
+            line-height: 0.9;
+            margin: 0;
             text-transform: uppercase;
+        }
+
+        .iconic-country {
+            font-weight: 400;
+            /* Often country is lighter or same weight, let's stick to bold for now based on image, or maybe slightly lighter? Image shows both bold. */
         }
 
         /* ========== FEATURED PROJECTS (Masonry/Grid) ========== */
@@ -974,37 +1038,57 @@
         <!-- Project 1 -->
         <div class="iconic-item">
             <div class="iconic-bg" style="background-image: url('assets/img/iconic_1.png');"></div>
-            <div class="iconic-content">
-                <div class="iconic-label">ICONIQUE</div>
-                <h2 class="iconic-title">LILLE</h2>
-                <p class="iconic-location">FRANCE</p>
+            <div class="iconic-overlay"></div>
+            <div class="iconic-frame">
+                <div class="iconic-text-wrapper">
+                    <div class="iconic-label">ICONIQUE</div>
+                    <div class="iconic-info">
+                        <h2 class="iconic-city">LILLE</h2>
+                        <h3 class="iconic-country">FRANCE</h3>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Project 2 -->
         <div class="iconic-item">
             <div class="iconic-bg" style="background-image: url('assets/img/iconic_2.png');"></div>
-            <div class="iconic-content">
-                <div class="iconic-label">ICONIQUE</div>
-                <h2 class="iconic-title">MONTPELLIER</h2>
-                <p class="iconic-location">FRANCE</p>
+            <div class="iconic-overlay"></div>
+            <div class="iconic-frame">
+                <div class="iconic-text-wrapper">
+                    <div class="iconic-label">ICONIQUE</div>
+                    <div class="iconic-info">
+                        <h2 class="iconic-city">MONTPELLIER</h2>
+                        <h3 class="iconic-country">FRANCE</h3>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Project 3 -->
         <div class="iconic-item">
             <div class="iconic-bg" style="background-image: url('assets/img/iconic_3.png');"></div>
-            <div class="iconic-content">
-                <div class="iconic-label">ICONIQUE</div>
-                <h2 class="iconic-title">MONTPELLIER</h2>
-                <p class="iconic-location">FRANCE</p>
+            <div class="iconic-overlay"></div>
+            <div class="iconic-frame">
+                <div class="iconic-text-wrapper">
+                    <div class="iconic-label">ICONIQUE</div>
+                    <div class="iconic-info">
+                        <h2 class="iconic-city">MONTPELLIER</h2>
+                        <h3 class="iconic-country">FRANCE</h3>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Project 4 -->
         <div class="iconic-item">
             <div class="iconic-bg" style="background-image: url('assets/img/iconic_4.png');"></div>
-            <div class="iconic-content">
-                <div class="iconic-label">ICONIQUE</div>
-                <h2 class="iconic-title">LYON</h2>
-                <p class="iconic-location">FRANCE</p>
+            <div class="iconic-overlay"></div>
+            <div class="iconic-frame">
+                <div class="iconic-text-wrapper">
+                    <div class="iconic-label">ICONIQUE</div>
+                    <div class="iconic-info">
+                        <h2 class="iconic-city">LYON</h2>
+                        <h3 class="iconic-country">FRANCE</h3>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
