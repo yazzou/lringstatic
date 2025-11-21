@@ -2,6 +2,29 @@
 
 ## Version History
 
+### lring_homepage_sleek.html - 20 Novembre 2025
+**Focus: Fixed Iconic Section Display & Text Readability**
+
+#### Key Improvements:
+1. **Fixed CSS structure for iconic projects section**
+   - Corrected malformed `.iconic-item` CSS properties
+   - Added proper `.iconic-bg` CSS class definition
+   - Fixed hover effects and transitions for iconic items
+
+2. **Enhanced text readability over iconic images**
+   - Added gradient overlay (dark to light) for better text contrast
+   - Implemented proper z-index layering for text elements
+   - Maintained luxury aesthetic while improving functionality
+
+#### Technical Changes:
+- Removed duplicate CSS properties in `.iconic-item`
+- Added proper `.iconic-bg` CSS class with correct positioning
+- Created `.iconic-overlay` with gradient background (70% to 10% opacity)
+- Added overlay divs to all 4 iconic projects in HTML
+- Updated z-index hierarchy: overlay (1) → frame (2) → text (3)
+- Fixed opacity and transform transitions for iconic section
+- Maintained no section title as per requirement
+
 ### lring_homepage_v8.html - 24 Octobre 2025
 **Focus: Harmonised Header & Hero Alignment**
 
