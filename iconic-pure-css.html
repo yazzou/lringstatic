@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ICONIQUE - Montpellier, France</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #f3f4f6;
+            color: #111827;
+        }
+
+        .iconic-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+
+        .background-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content-container {
+            position: relative;
+            height: 100%;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (min-width: 640px) {
+            .content-container {
+                padding: 3rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .content-container {
+                padding: 4rem;
+            }
+        }
+
+        .frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .text-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .text-wrapper {
+            display: flex;
+            align-items: center;
+            margin-left: -2.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .text-wrapper {
+                margin-left: -3rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .text-wrapper {
+                margin-left: -4rem;
+            }
+        }
+
+        .vertical-label {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            background-color: #ffffff;
+            padding: 1.5rem 0.75rem;
+            font-family: 'Anton', sans-serif;
+            font-size: 1.25rem;
+            letter-spacing: 0.1em;
+            color: #000000;
+        }
+
+        .location-text {
+            display: flex;
+            flex-direction: column;
+            padding-left: 1.5rem;
+            color: #ffffff;
+            font-family: 'Anton', sans-serif;
+        }
+
+        @media (min-width: 640px) {
+            .location-text {
+                padding-left: 2rem;
+            }
+        }
+
+        .city-name, .country-name {
+            font-weight: 400;
+            letter-spacing: -0.025em;
+            line-height: 1;
+        }
+
+        .city-name {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .country-name {
+            font-size: 3.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .city-name, .country-name {
+                font-size: 4.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .city-name, .country-name {
+                font-size: 5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .city-name, .country-name {
+                font-size: 6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="iconic-container">
+        <div class="background-image">
+            <img alt="Exterior view of the Montpellier Sud de France train station at dusk, showcasing its modern architectural design with a large, sweeping roof and structural columns."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpUa6NAL3jqnVLKkWO9VXeCAGEVdc5pVu_Bm5NU1TUtZMACT6x_FsBoCnlRivm-uw70x2RM1djIlidNgmTk9MMmShyRM7sQ7LPuGsmqw6LCxP8SoxKzjN_cao76OrGHTmp0vYM1jkGQDiQchj289GFDU-dgHCYpo7w6vMT2QPKaBPCkLFtXxA01AK2CjqB7S91SDgvnv9t39mmicxR6k6sxW1SWsp235NHdvCp4oWLFIg-0bewgtz4y0As2SxP0bWBrLxdoNGtTrj9" />
+        </div>
+        <div class="content-container">
+            <div class="frame">
+                <div class="text-container">
+                    <div class="text-wrapper">
+                        <div class="vertical-label">ICONIQUE</div>
+                        <div class="location-text">
+                            <h1 class="city-name">MONTPELLIER</h1>
+                            <h2 class="country-name">FRANCE</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
